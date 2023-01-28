@@ -19,7 +19,7 @@
 
     <link href="~/lib/bootstrap/dist/css/bootstrap-icons.css" rel="stylesheet">
 
-    <link href="~/lib/tooplate-crispy-kitchen.css" rel="stylesheet">
+    <link href="~/lib/wing-chun.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!--
 
@@ -42,10 +42,6 @@
                 Demir Wing Tsun
             </a>
 
-            <div class="d-lg-none">
-                <button type="button" class="custom-btn btn btn-danger" data-bs-toggle="modal" data-bs-target="#BookingModal">Reservation</button>
-            </div>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto">
                     <li class="nav-item">
@@ -53,30 +49,33 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="about.html">Hakkımızda</a>
+                        <a class="nav-link" href="@Url.Action("About","Home")">Hakkımızda</a>
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="menu.html">Okullarımız</a>
+                        <a class="nav-link" href="@Url.Action("Index","Schools")">Okullarımız</a>
                     </li>
 
                     <li class="nav-item">
                         <a class="nav-link" href="news.html">Galeri</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="@Url.Action("Index","News")">Blog</a>
+                    </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">İletişim</a>
+                        <a class="nav-link" href="@Url.Action("Contact","Home")">İletişim</a>
                     </li>
                 </ul>
             </div>
             <ul class="social-icon">
-                <li><a href="#" <i class="fa-brands fa-instagram fa-xl"></i></a></li>
+                <li><a href="https://www.instagram.com/demirwingtsun/" target="_blank" <i class="fa-brands fa-instagram fa-xl"></i></a></li>
                 <li>
-                    <a href="https://twitter.com/search?q=tooplate.com&src=typed_query&f=live" target="_blank"
+                    <a href="" target="_blank"
                           <i class="fa-brands fa-facebook fa-xl"></i></a>
                 </li>
 
-                <li><a href="#" <i class="fa-brands fa-youtube fa-xl"></i></a></li>
+                <li><a href="https://www.youtube.com/sifuserhatdemir" target="_blank" <i class="fa-brands fa-youtube fa-xl"></i></a></li>
             </ul>
 
         </div>
@@ -93,41 +92,37 @@
         <div class="container">
 
             <div class="row">
+                <div class="col-lg-4 col-md-4 col-xs-12 tooplate-mt5">
+                    <h6 class="text-white mb-lg-4 mb-3">Bize Ulaşın</h6>
 
-                <div class="col-12">
-                    <h4 class="text-white mb-4 me-5">Demir Wing Tsun</h4>
+                    <p class="mb-2">Eğitim Koordinatörleri:</p>
+
+                    <p>Sifu Serhat DEMİR : +90 0544 444 4444</p>
+
+                    <p>Sihing Emre YALNIZLAR : +90 0546 205 7700</p>
                 </div>
 
-                <div class="col-lg-4 col-md-7 col-xs-12 tooplate-mt30">
-                    <h6 class="text-white mb-lg-4 mb-3">Lokasyon</h6>
-
-                    <p>121 Einstein Loop N, Bronx, NY 10475, United States</p>
-
-                    <a href="https://goo.gl/maps/wZVGLA7q64uC1s886" class="custom-btn btn btn-dark mt-2">Yol Tarifi</a>
-                </div>
-
-                <div class="col-lg-4 col-md-5 col-xs-12 tooplate-mt30">
-                    <h6 class="text-white mb-lg-4 mb-3">Çalışma Saatleri</h6>
-
-                    <p class="mb-2">Salı ve Cuma</p>
-
-                    <p>10:00 AM - 08:00 PM</p>
-
-                    <p>Tel: <a href="tel: 010-02-0340" class="tel-link">010-02-0340</a></p>
-                </div>
-
-                <div class="col-lg-4 col-md-6 col-xs-12 tooplate-mt30">
+                <div class="col-lg-4 col-md-4 col-xs-12 tooplate-mt5">
                     <h6 class="text-white mb-lg-4 mb-3">Sosyal Medya</h6>
 
-                    <ul>
-                        <li><a href="#" <i class="fa-brands fa-instagram fa-xl"></i></a></li> <br />
-                        <li>
+                    <ul style="margin:auto">
+                        <li style="color:wheat"><a href="https://www.instagram.com/demirwingtsun/" target="_blank" <i class="fa-brands fa-instagram fa-xl"></i></a></li>
+                        <br />
+                        <li style="color:wheat">
                             <a href="https://twitter.com/search?q=tooplate.com&src=typed_query&f=live" target="_blank"
                           <i class="fa-brands fa-facebook fa-xl"></i></a>
                         </li>
                         <br />
-                        <li><a href="#" <i class="fa-brands fa-youtube fa-xl"></i></a></li>
+                        <li style="color:wheat"><a href="https://www.youtube.com/sifuserhatdemir" <i class="fa-brands fa-youtube fa-xl"></i></a></li>
                     </ul>
+                </div>
+                <div class="col-lg-4 col-md-4 col-xs-12 tooplate-mt5" style="margin:auto">
+                    <a href="@Url.Action("Index","Home")">ANASAYFA</a><br />
+                    <a href="@Url.Action("About","Home")">HAKKIMIZDA</a><br />
+                    <a href="@Url.Action("Index","Schools")">OKULLARIMIZ</a><br />
+                    <a href="">GALERİ</a><br />
+                    <a href="@Url.Action("Index","News")">BLOG</a><br />
+                    <a href="@Url.Action("Contact","Home")">İLETİŞİM</a><br />
                 </div>
 
             </div><!-- row ending -->
@@ -135,82 +130,6 @@
         </div><!-- container ending -->
 
     </footer>
-
-    <!-- Modal -->
-    <div class="modal fade" id="BookingModal" tabindex="-1" aria-labelledby="BookingModal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3 class="mb-0">Reserve a table</h3>
-
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-
-                <div class="modal-body d-flex flex-column justify-content-center">
-                    <div class="booking">
-
-                        <form class="booking-form row" role="form" action="#" method="post">
-                            <div class="col-lg-6 col-12">
-                                <label for="name" class="form-label">Full Name</label>
-
-                                <input type="text" name="name" id="name" class="form-control" placeholder="Your Name" required>
-                            </div>
-
-                            <div class="col-lg-6 col-12">
-                                <label for="email" class="form-label">Email Address</label>
-
-                                <input type="email" name="email" id="email" class="form-control" placeholder="your@email.com" required>
-                            </div>
-
-                            <div class="col-lg-6 col-12">
-                                <label for="phone" class="form-label">Phone Number</label>
-
-                                <input type="tel" name="phone" id="phone" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" class="form-control" placeholder="123-456-7890">
-                            </div>
-
-                            <div class="col-lg-6 col-12">
-                                <label for="people" class="form-label">Number of persons</label>
-
-                                <input type="text" name="people" id="people" class="form-control" placeholder="12 persons">
-                            </div>
-
-                            <div class="col-lg-6 col-12">
-                                <label for="date" class="form-label">Date</label>
-
-                                <input type="date" name="date" id="date" value="" class="form-control">
-                            </div>
-
-                            <div class="col-lg-6 col-12">
-                                <label for="time" class="form-label">Time</label>
-
-                                <select class="form-select form-control" name="time" id="time">
-                                    <option value="5" selected>5:00 PM</option>
-                                    <option value="6">6:00 PM</option>
-                                    <option value="7">7:00 PM</option>
-                                    <option value="8">8:00 PM</option>
-                                    <option value="9">9:00 PM</option>
-                                </select>
-                            </div>
-
-                            <div class="col-12">
-                                <label for="message" class="form-label">Special Request</label>
-
-                                <textarea class="form-control" rows="4" id="message" name="message" placeholder=""></textarea>
-                            </div>
-
-                            <div class="col-lg-4 col-12 ms-auto">
-                                <button type="submit" class="form-control">Submit Request</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <div class="modal-footer"></div>
-
-            </div>
-
-        </div>
-    </div>
 
     <!-- JAVASCRIPT FILES -->
     <script src="~/lib/jquery/dist/jquery.min.js" asp-append-version="true"></script>
