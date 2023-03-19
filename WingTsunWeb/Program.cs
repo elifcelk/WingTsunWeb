@@ -3,6 +3,7 @@ using Persistence;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddMvc();
 //builder.Services.AddApplication(builder.Configuration);
 //builder.Services.AddShared(builder.Configuration);
 

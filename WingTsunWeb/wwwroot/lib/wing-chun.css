@@ -129,8 +129,8 @@ a:hover {
 }
 
 .section-padding {
-  padding-top: 8rem;
-  padding-bottom: 8rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
 b,
@@ -448,6 +448,7 @@ strong {
 -----------------------------------------*/
 .menu,
 .about,
+.videos,
 .news,
 .related-news,
 .newsletter,
@@ -758,8 +759,8 @@ strong {
 
   .site-header,
   .section-padding {
-    padding-top: 5rem;
-    padding-bottom: 5rem;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
   }
 
   .navbar {
