@@ -293,6 +293,10 @@ strong {
   background-image: url('../images/header/blog2.jpg');
 }
 
+.site-gallery-header {
+    background-image: url('../images/header/wto1.jpg');
+}
+
 .site-contact-header {
     background-image: url('../images/header/contact.jpg');
     background-size: cover;

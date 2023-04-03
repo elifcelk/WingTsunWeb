@@ -7,7 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Demir Wing Tsun</title>
+    <title>@ViewData["Title"] - Demir Wing Tsun</title>
 
     <!-- CSS FILES -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,7 +57,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="news.html">Galeri</a>
+                        <a class="nav-link" href="@Url.Action("Index","Gallery")">Galeri</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="@Url.Action("Index","News")">Blog</a>
@@ -120,7 +120,7 @@
                     <a href="@Url.Action("Index","Home")">ANASAYFA</a><br />
                     <a href="@Url.Action("About","Home")">HAKKIMIZDA</a><br />
                     <a href="@Url.Action("Index","Schools")">OKULLARIMIZ</a><br />
-                    <a href="">GALERİ</a><br />
+                    <a href="@Url.Action("Index","Gallery")">GALERİ</a><br />
                     <a href="@Url.Action("Index","News")">BLOG</a><br />
                     <a href="@Url.Action("Contact","Home")">İLETİŞİM</a><br />
                 </div>

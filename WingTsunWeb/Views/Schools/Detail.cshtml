@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Okul Detayı";
+}
+@model Application.Models.SchoolDetailModel
+<header class="site-header site-about-header">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 col-12 mx-auto">
+                <h3 class="text-white">Okul Detayı</h3>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="overlay"></div>
+</header>
+
+<section class="contact section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <h4 class="mb-4">@Model.Name</h4>
+            </div>
+
+            <div class="col-lg-6 col-12">
+                <form class="custom-form contact-form row" action="#" method="post" role="form">
+                    <div class="col-lg-6 col-6">
+                        <label for="contact-name" class="form-label">Eğitmen Adı</label>
+
+                        <p>@Model.InstructorName</p>
+                    </div>
+
+                    <div class="col-lg-6 col-6">
+                        <label for="contact-phone" class="form-label">Eğitmen Ünvanı</label>
+
+                        <p>@Model.InstructorStatus</p>
+                    </div>
+
+                    <div class="col-12">
+                        <label for="contact-email" class="form-label">Eğitmen Özgeçmişi</label>
+
+                        <p>@Model.InstructorResume</p>
+
+                        <label for="contact-message" class="form-label">İletişim Numarası</label>
+
+                        <p>@Model.ContactNumber</p>
+                    </div>
+                </form>
+            </div>
+
+            <div class="col-lg-4 col-12 mx-auto mt-lg-5 mt-4">
+
+                <h6>Çalışma Saatleri</h6>
+
+                <div class="d-flex mb-lg-3">
+                    <p>@Model.TimeTable</p>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <label for="contact-message" class="form-label">Adres</label>
+                <p>@Model.Address</p>
+
+                <a href="https://goo.gl/maps/ggtsq67BFvo3RWY29" target="_blank" class="custom-btn btn btn-dark mt-2">Yol Tarifi</a>
+            </div>
+
+        </div>
+    </div>
+</section>
