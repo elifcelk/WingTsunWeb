@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Duyuru Detayı";
+}
+@model Application.Models.AnnouncementDetailModel
+<header class="site-header site-about-header">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-10 col-12 mx-auto">
+                <h3 class="text-white">@Model.Title</h3>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="overlay">
+    </div>
+</header>
+
+<section class="contact section-padding">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12">
+                <label>Eklenme Tarihi: @Model.CreatedTime.ToShortDateString()</label><br /><br /><br />
+            </div>
+
+            <div class="col-lg-10 col-12 mx-auto">
+
+                    <div class="col-12">
+                        <p>@Model.Content</p>
+                    </div>
+            </div>
+
+        </div>
+    </div>
+</section>

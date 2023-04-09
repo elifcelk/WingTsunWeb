@@ -4,23 +4,22 @@ using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using WingTsunWeb.Infrastructure;
 
-namespace WingTsunWeb.Controllers
+namespace WingTsunWeb.Controllers;
+
+public class SchoolsController : BaseController
 {
-    public class SchoolsController : BaseController
+    [HttpGet("/okullarimiz")]
+    public async Task<IActionResult> Index()
     {
-        [HttpGet("/okullarimiz")]
-        public async Task<IActionResult> Index()
-        {
-            List<SchoolModel> model = await Mediator.Send(new GetAllSchoolsQuery());
+        List<SchoolModel> model = await Mediator.Send(new GetAllSchoolsQuery());
 
-            return View(model);
-        }
+        return View(model);
+    }
 
-        [HttpGet("/okullarimiz/detay/{schoolId}")]
-        public async Task<IActionResult> Detail(Guid schoolId)
-        {
-            SchoolDetailModel model = await Mediator.Send(new GetSchoolDetailQuery(schoolId));
-            return View(model);
-        }
+    [HttpGet("/okullarimiz/detay/{schoolId}")]
+    public async Task<IActionResult> Detail(Guid schoolId)
+    {
+        SchoolDetailModel model = await Mediator.Send(new GetSchoolDetailQuery(schoolId));
+        return View(model);
     }
 }

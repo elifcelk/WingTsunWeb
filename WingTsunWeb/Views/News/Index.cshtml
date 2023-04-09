@@ -1,4 +1,10 @@
-﻿<header class="site-header site-news-header">
+﻿@using Application.Helpers
+@using Domain.Common.Attributes
+@{
+    ViewData["Title"] = "Duyurular & Seminerler";
+}
+@model IEnumerable<Application.Models.AnnouncementModel>
+<header class="site-header site-news-header">
     <div class="container">
         <div class="row">
 
@@ -15,78 +21,44 @@
     <div class="container">
         <div class="row">
             <div class="container">
-                <div class="row">
+                @if (Model.Count() > 0)
+                {
+                    foreach (var announcement in Model)
+                    {
+                        <div class="row">
 
-                    <div class="col-lg-3 col-12 mb-2">
-                        <a href="news-detail.html">
-                            <img src="images/3.jpg" class="img-fluid news-image" alt="">
-                        </a>
-                    </div>
+                            <div class="col-lg-3 col-12 mb-2">
+                                <a href="news-detail.html">
+                                    <img src="images/3.jpg" class="img-fluid news-image" alt="">
+                                </a>
+                            </div>
 
-                    <div class="col-lg-6 col-12">
+                            <div class="col-lg-6 col-12">
 
-                        <div class="news-text-info">
-                            <span class="category-tag me-3 bg-info">Seminer</span>
+                                <div class="news-text-info">
+                                    @{
+                                        var color = announcement.AnnouncementType.GetAttribute<ColorAttribute>().Name;
+                                        <span class="category-tag me-3 bg-@color">@EnumHelper.GetDisplayName(announcement.AnnouncementType)</span>
+                                    }
+                                    
 
-                            <strong>12 April 2022</strong>
+                                    <strong>@announcement.CreatedTime.ToShortDateString()</strong>
 
-                            <h5 class="news-title mt-2">
-                                <a href="news-detail.html" class="news-title-link">Tekirdağ Seminerimiz Sifu Serhat DEMİR Eşliğinde Gerçekleşti</a>
-                            </h5>
-                            <p><a href="">Detay Görüntüle --></a></p>
+                                    <h5 class="news-title mt-2">
+                                        <a href="@Url.Action("Detail", new {announcementId = announcement.Id})" class="news-title-link">@announcement.Title</a>
+                                    </h5>
+                                    <p><a href="@Url.Action("Detail", new {announcementId = announcement.Id})">Detay Görüntüle --></a></p>
+                                </div>
+
+                            </div>
+
                         </div>
-
-                    </div>
-
-                </div>
-                <div class="row">
-
-                    <div class="col-lg-3 col-12 mb-2">
-                        <a href="news-detail.html">
-                            <img src="images/2.jpg" class="img-fluid news-image" alt="">
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-12">
-
-                        <div class="news-text-info">
-                            <span class="category-tag me-3 bg-info">Seminer</span>
-
-                            <strong>12 April 2022</strong>
-
-                            <h5 class="news-title mt-2">
-                                <a href="news-detail.html" class="news-title-link">İstanbul Seminerimiz Sifu Serhat DEMİR Eşliğinde Gerçekleşti</a>
-                            </h5>
-                            <p><a href="">Detay Görüntüle --></a></p>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="row">
-
-                    <div class="col-lg-3 col-12 mb-2">
-                        <a href="news-detail.html">
-                            <img src="images/header/wto1.jpg" class="img-fluid news-image" alt="">
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-12">
-
-                        <div class="news-text-info">
-                            <span class="category-tag me-3 bg-danger">Duyuru</span>
-
-                            <strong>12 April 2022</strong>
-
-                            <h5 class="news-title mt-2">
-                                <a href="news-detail.html" class="news-title-link">Yeni Dönem Kayıtlarımız Başlıyor !</a>
-                            </h5>
-                            <p><a href="">Detay Görüntüle --></a></p>
-                        </div>
-
-                    </div>
-
-                </div>
+                    }
+                }
+                else
+                {
+                    <p>Duyuru bulunmamaktadır.</p>    
+                }
             </div>
         </div>
     </div>

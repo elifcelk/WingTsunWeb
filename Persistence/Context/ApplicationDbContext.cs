@@ -47,11 +47,24 @@ namespace Persistence.Context
                 entity.Property(p => p.CreatedTime).HasColumnType("timestamp without time zone").HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
             });
 
+            modelBuilder.Entity<Announcement>(entity =>
+            {
+                entity.ToTable("Announcements");
+                entity.HasKey(e => e.Id).HasName("PK_Announcement_Id");
+
+                entity.Property(p => p.Id).HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()").IsRequired().ValueGeneratedOnAdd();
+                entity.Property(p => p.Title).HasColumnType("character varying").HasMaxLength(100);
+
+
+                entity.Property(p => p.CreatedTime).HasColumnType("timestamp without time zone").HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
+            });
+
             base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<School> Schools { get; set; }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<Announcement> Announcements { get ; set; }
 
         public async Task<int> SaveChangesAsync()
         {

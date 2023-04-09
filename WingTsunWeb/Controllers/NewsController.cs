@@ -1,12 +1,25 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Features.NewsFeatures.Queries;
+using Application.Features.SchoolsFeatures.Queries;
+using Application.Models;
+using Microsoft.AspNetCore.Mvc;
+using WingTsunWeb.Infrastructure;
 
-namespace WingTsunWeb.Controllers
+namespace WingTsunWeb.Controllers;
+
+public class NewsController : BaseController
 {
-    public class NewsController : Controller
+    [HttpGet("/duyurular")]
+    public async Task<IActionResult> Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        List<AnnouncementModel> model = await Mediator.Send(new GetAllAnnouncementsQuery());
+
+        return View(model);
+    }
+
+    [HttpGet("/duyurular/detay/{announcementId}")]
+    public async Task<IActionResult> Detail(Guid announcementId)
+    {
+        AnnouncementDetailModel model = await Mediator.Send(new GetAnnouncementDetailQuery(announcementId));
+        return View(model);
     }
 }

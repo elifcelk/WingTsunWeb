@@ -12,33 +12,39 @@
     <div class="overlay"></div>
 </header>
 
-<section class="gallery section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="gallery" style=" margin: 50px;float: left;width: 450px;">
-                <a target="_blank" href="~/images/1.jpg">
-                    <img src="~/images/1.jpg" alt="Cinque Terre" style="width: 100%;height: auto;">
-                </a>
-            </div>
+<section>
+    <div class="col-lg-12">
+        <br /><br />
+        <div class="row"  >
+            <div id="bxslider-gallery" style=" width: 600px;margin:auto;left: 50%;padding: 20px;">
+               <ul class="bxslider-gallery">
+                <li><img src="~/images/gallery/1.jpg" style="margin:auto;"/></li>
+                <li><img src="~/images/gallery/2.jpg" style="margin:auto;" /></li>
+                <li><img src="~/images/gallery/3.jpg" style="margin:auto;" /></li>
+                <li><img src="~/images/gallery/wto1.jpg" style="margin:auto;" /></li>
+            </ul>
+           </div>
+            
 
-            <div class="gallery" style=" margin: 50px;float: left;width: 450px;">
-                <a target="_blank" href="~/images/2.jpg">
-                    <img src="~/images/2.jpg" alt="Cinque Terre" style="width: 100%;height: auto;">
-                </a>
+            <div id="bx-pager">
+                <a data-slide-index="0" href=""><img src="~/images/gallery/1.jpg" width="72" height="72" /></a>
+                <a data-slide-index="1" href=""><img src="~/images/gallery/2.jpg" width="72" height="72" /></a>
+                <a data-slide-index="2" href=""><img src="~/images/gallery/3.jpg" width="72" height="72" /></a>
+                <a data-slide-index="3" href=""><img src="~/images/gallery/wto1.jpg" width="72" height="72" /></a>
             </div>
-
-            <div class="gallery" style=" margin: 50px;float: left;width: 450px;">
-                <a target="_blank" href="~/images/3.jpg">
-                    <img src="~/images/3.jpg" alt="Cinque Terre" style="width: 100%;height: auto;">
-                </a>
-            </div>
-
-            <div class="gallery" style=" margin: 50px;float: left;width: 450px;">
-                <a target="_blank" href="~/images/header/wto1.jpg">
-                    <img src="~/images/header/wto1.jpg" alt="Cinque Terre" style="width: 100%;height: auto;">
-                </a>
-            </div>
-
         </div>
+        
     </div>
+       
+    
 </section>
+@section Scripts{
+    <script src="~/lib/bxSlider/js/bxslider.min.js" asp-append-version="true"></script>
+    <script>
+        $('.bxslider-gallery').bxSlider({
+            pagerCustom: '#bx-pager',
+            slideWidth: 700,
+            slideMargin: 10
+        });
+    </script>
+};
