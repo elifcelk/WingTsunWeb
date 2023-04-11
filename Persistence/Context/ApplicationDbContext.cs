@@ -59,12 +59,39 @@ namespace Persistence.Context
                 entity.Property(p => p.CreatedTime).HasColumnType("timestamp without time zone").HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
             });
 
+            modelBuilder.Entity<Slider>(entity =>
+            {
+                entity.ToTable("Sliders");
+                entity.HasKey(e => e.Id).HasName("PK_Slider_Id");
+
+                entity.Property(p => p.Id).HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()").IsRequired().ValueGeneratedOnAdd();
+                entity.Property(p => p.Title).HasColumnType("character varying");
+                entity.Property(p => p.Description).HasColumnType("character varying");
+
+
+                entity.Property(p => p.CreatedTime).HasColumnType("timestamp without time zone").HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
+            });
+
+            modelBuilder.Entity<Video>(entity =>
+            {
+                entity.ToTable("Videos");
+                entity.HasKey(e => e.Id).HasName("PK_Video_Id");
+
+                entity.Property(p => p.Id).HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()").IsRequired().ValueGeneratedOnAdd();
+
+
+                entity.Property(p => p.CreatedTime).HasColumnType("timestamp without time zone").HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
+            });
+
             base.OnModelCreating(modelBuilder);
+
+
         }
 
         public DbSet<School> Schools { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Announcement> Announcements { get ; set; }
+        public DbSet<Video> Videos { get; set; }
 
         public async Task<int> SaveChangesAsync()
         {

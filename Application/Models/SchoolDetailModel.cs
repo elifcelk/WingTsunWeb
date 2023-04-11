@@ -17,6 +17,7 @@ namespace Application.Models
         public string InstructorName { get; set; }
         public string InstructorStatus { get; set; }
         public string InstructorResume { get; set; }
+        public string MapLink { get; set; }
         public string TimeTable { get; set; }
     }
 }

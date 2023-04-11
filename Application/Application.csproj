@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\HomeFeatures\Commands\" />
     <Folder Include="Features\NewsFeatures\Commands\" />
     <Folder Include="Features\SchoolsFeatures\Commands\" />
   </ItemGroup>

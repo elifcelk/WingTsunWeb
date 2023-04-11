@@ -7,10 +7,8 @@ using System.Threading.Tasks;
 
 namespace Domain.Entities
 {
-    public class Slider :BaseEntity
+    public class Video : BaseEntity
     {
-        public string Description { get; set; }
-        public string Title { get; set; }
-        public string ImageURL { get; set; }
+        public string Path { get; set; }
     }
 }

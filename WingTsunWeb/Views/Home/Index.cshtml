@@ -1,24 +1,24 @@
-﻿@{
+﻿@using Application.Helpers
+@using Domain.Common.Attributes
+@{
     ViewData["Title"] = "Anasayfa";
+    IEnumerable<Application.Models.SliderModel> sliders = ViewBag.GetSliders;
+    IEnumerable<Application.Models.AnnouncementModel> announcements = ViewBag.GetAnnouncements;
+    IEnumerable<Application.Models.SchoolForHomeModel> schools = ViewBag.GetSchools;
+    IEnumerable<Application.Models.VideoModel> videos = ViewBag.GetVideos;
 }
 
 <section>
     <div class="slider">
-        <div>
-            <img src="~/images/slider/1.jpg" title="deneme" style="margin:auto;">
-        </div>
-        <div>
-            <img src="~/images/slider/2.jpg" title="deneme" style="margin:auto;" />
-        </div>
-        <div>
-            <img src="~/images/slider/3.jpg" title="deneme" style="margin:auto;"/>
-        </div>
-        <div>
-            <img src="~/images/slider/wto1.jpg" title="deneme" style="margin:auto;" />
-        </div>
-        <div>
-            <img src="~/images/slider/wto2.jpg" title="deneme" style="margin:auto;" />
-        </div>
+        @if (sliders.Count() > 0)
+        {
+            foreach (var slider in sliders)
+            {
+                <div>
+                    <img src="@slider.ImageURL" title="@slider.Title" style="margin:auto;">
+                </div>
+            }
+        }
     </div>
 </section>
 
@@ -28,54 +28,26 @@
             <div class="col-12">
                 <h3 class="text-center mb-lg-5 mb-4">Okullarımız</h3>
             </div>
+            @if (schools.Count() > 0)
+            {
+                foreach(var school in schools){
+                    <div class="col-lg-4 col-md-6 col-12">
+                        <div class="menu-thumb">
+                            <div class="menu-image-wrap">
+                                <img src="@school.PhotoPath" class="img-fluid menu-image" width="400" alt="">
+                                <span class="menu-tag bg-warning">@school.DistrictName</span>
+                            </div>
 
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="menu-thumb">
-                    <div class="menu-image-wrap">
-                        <img src="~/images/2.jpg" class="img-fluid menu-image" width="400" height="300" alt="">
-                        <span class="menu-tag bg-warning">Kozyatağı</span>
+                            <div class="menu-info d-flex flex-wrap align-items-center">
+                                <h6 class="mb-0">@school.Name</h6>
+                            </div>
+                            <div class="row">
+                                <a href="@Url.Action("Detail","Schools", new {schoolId = school.Id})"><span class="price-tag bg-white shadow-lg ms-">Detay</span></a>
+                            </div>
+                        </div>
                     </div>
-
-                    <div class="menu-info d-flex flex-wrap align-items-center">
-                        <h6 class="mb-0">İstanbul Demir WingTsun</h6>
-                    </div>
-                    <div class="row">
-                        <a href=""><span class="price-tag bg-white shadow-lg ms-">Detay</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="menu-thumb">
-                    <div class="menu-image-wrap">
-                        <img src="~/images/2.jpg" class="img-fluid menu-image" width="400" height="300" alt="">
-                        <span class="menu-tag bg-warning">Urla</span>
-                    </div>
-
-                    <div class="menu-info d-flex flex-wrap align-items-center">
-                        <h6 class="mb-0">İzmir Demir WingTsun</h6>
-                    </div>
-                    <div class="row">
-                        <a href=""><span class="price-tag bg-white shadow-lg ms-">Detay</span></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6 col-12">
-                <div class="menu-thumb">
-                    <div class="menu-image-wrap">
-                        <img src="~/images/3.jpg" class="img-fluid menu-image" width="400" height="300" alt="">
-                        <span class="menu-tag bg-warning">Süleymanpaşa</span>
-                    </div>
-
-                    <div class="menu-info d-flex flex-wrap align-items-center">
-                        <h6 class="mb-0">Tekirdağ Demir WingTsun</h6><br />
-                    </div>
-                    <div class="row">
-                        <a href=""><span class="price-tag bg-white shadow-lg ms-">Detay</span></a>
-                    </div>
-                </div>
-            </div>
+                }
+            }
 
         </div><br /><br />
         <div class="row">
@@ -85,86 +57,49 @@
 </section>
 
 <section class="news section-padding">
-            <div class="container">
+    <div class="container">
+        <div class="col-12">
+            <h3 class="text-center mb-lg-5 mb-4">Duyurular & Seminerler</h3>
+        </div>
+        @if (announcements.Count() > 0)
+        {
+            foreach (var announcement in announcements.Take(3))
+            {
                 <div class="row">
-                    <div class="col-12">
-                        <h3 class="text-center mb-lg-5 mb-4">Duyurular & Seminerler</h3>
-                    </div>
+
                     <div class="col-lg-3 col-12 mb-2">
-                        <a href="news-detail.html">
-                            <img src="images/3.jpg" class="img-fluid news-image" alt="">
+                        <a href="@Url.Action("Detail","News", new {announcementId = announcement.Id})">
+                            <img src="@announcement.MainImage" class="img-fluid news-image" alt="">
                         </a>
                     </div>
 
                     <div class="col-lg-6 col-12">
-
                         <div class="news-text-info">
-                            <span class="category-tag me-3 bg-info">Seminer</span>
+                            @{
+                                var color = announcement.AnnouncementType.GetAttribute<ColorAttribute>().Name;
+                                <span class="category-tag me-3 bg-@color">@EnumHelper.GetDisplayName(announcement.AnnouncementType)</span>
+                            }
 
-                            <strong>12 April 2022</strong>
 
-                            <h6 class="news-title mt-2">
-                                <a href="news-detail.html" class="news-title-link">Tekirdağ Seminerimiz Sifu Serhat DEMİR Eşliğinde Gerçekleşti</a>
-                            </h6>
-                            <p><a href="">Detay Görüntüle --></a></p>
+                            <strong>@announcement.CreatedTime.ToShortDateString()</strong>
+
+                            <h5 class="news-title mt-2">
+                                <a href="@Url.Action("Detail","News", new {announcementId = announcement.Id})" class="news-title-link">@announcement.Title</a>
+                            </h5>
+                            <p><a href="@Url.Action("Detail","News", new {announcementId = announcement.Id})">Detay Görüntüle --></a></p>
                         </div>
-
                     </div>
-
                 </div>
-                <div class="row">
-
-                    <div class="col-lg-3 col-12 mb-2">
-                        <a href="news-detail.html">
-                            <img src="images/2.jpg" class="img-fluid news-image" alt="">
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-12">
-
-                        <div class="news-text-info">
-                            <span class="category-tag me-3 bg-info">Seminer</span>
-
-                            <strong>12 April 2022</strong>
-
-                            <h6 class="news-title mt-2">
-                                <a href="news-detail.html" class="news-title-link">İstanbul Seminerimiz Sifu Serhat DEMİR Eşliğinde Gerçekleşti</a>
-                            </h6>
-                            <p><a href="">Detay Görüntüle --></a></p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <div class="row">
-
-                    <div class="col-lg-3 col-12 mb-2">
-                        <a href="news-detail.html">
-                            <img src="images/header/wto1.jpg" class="img-fluid news-image" alt="">
-                        </a>
-                    </div>
-
-                    <div class="col-lg-6 col-12">
-
-                        <div class="news-text-info">
-                            <span class="category-tag me-3 bg-danger">Duyuru</span>
-
-                            <strong>12 April 2022</strong>
-
-                            <h6 class="news-title mt-2">
-                                <a href="news-detail.html" class="news-title-link">Yeni Dönem Kayıtlarımız Başlıyor !</a>
-                            </h6>
-                            <p><a href="">Detay Görüntüle --></a></p>
-                        </div>
-
-                    </div>
-
-                </div>
-                <div class="row">
-                    <h6 class="text-center mb-lg-5 mb-4"><a href="@Url.Action("Index","News")">Tümü --></a></h6>
-                </div>
-            </div>
+            }
+        }
+        else
+        {
+                <p>Duyuru bulunmamaktadır</p>
+        }
+        <div class="row">
+            <h6 class="text-center mb-lg-5 mb-4"><a href="@Url.Action("Index","News")">Tümü --></a></h6>
+        </div>
+    </div>
 </section>
 
 <section class="videos section-padding">
@@ -177,9 +112,13 @@
                 <h6 class="mb-lg-5 mb-4"><a href="https://www.youtube.com/&#64;sifuserhatdemir/videos" target="_blank">Tüm videolar için tıklayınız</a></h6>
             </div>
             <div class="sliderVideo">
-                <iframe width="420" height="300" src="https://www.youtube.com/embed/u-St9weWmP0" frameborder="0" allowfullscreen></iframe>
-                <iframe width="420" height="300" src="https://www.youtube.com/embed/Ldj6hAT2TOY" frameborder="0" allowfullscreen></iframe>
-                <iframe width="420" height="300" src="https://www.youtube.com/embed/7FNar0rUhHg" frameborder="0" allowfullscreen></iframe>
+                @if (videos.Count() > 0)
+                {
+                    foreach (var video in videos)
+                    {
+                        <iframe width="420" height="300" src="@video.Path" frameborder="0" allowfullscreen></iframe>
+                    }
+                }
             </div>
         </div>
     </div>

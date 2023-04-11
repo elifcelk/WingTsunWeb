@@ -39,7 +39,8 @@ public class GetSchoolDetailQuery:IRequest<SchoolDetailModel>
                 InstructorName = k.InstructorName,
                 InstructorStatus= k.InstructorStatus,
                 InstructorResume = k.InstructorResume,
-                TimeTable = k.TimeTable
+                TimeTable = k.TimeTable,
+                MapLink = k.MapLink
             }).FirstOrDefaultAsync(cancellationToken:cancellationToken);
 
             return school;

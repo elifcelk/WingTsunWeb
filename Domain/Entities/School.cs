@@ -16,6 +16,7 @@ namespace Domain.Entities
         public string Address { get; set; }
         public string ContactNumber { get; set; }
         public string PhotoPath { get; set; }
+        public string MapLink { get; set; }
         public string InstructorName { get; set; }
         public string InstructorStatus { get; set; }
         public string InstructorResume { get; set; }

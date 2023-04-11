@@ -61,9 +61,8 @@
 
             <div class="col-12">
                 <label for="contact-message" class="form-label">Adres</label>
-                <p>@Model.Address</p>
-
-                <a href="https://goo.gl/maps/ggtsq67BFvo3RWY29" target="_blank" class="custom-btn btn btn-dark mt-2">Yol Tarifi</a>
+                <p>@Model.Address</p><br />
+                <iframe src="@Model.MapLink" width="900" height="400" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> 
             </div>
 
         </div>
