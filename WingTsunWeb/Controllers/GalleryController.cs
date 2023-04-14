@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Application.Features.GalleryFeatures.Queries;
+using Application.Features.SchoolsFeatures.Queries;
+using Application.Models;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using WingTsunWeb.Infrastructure;
 
 namespace WingTsunWeb.Controllers
 {
-    public class GalleryController : Controller
+    public class GalleryController : BaseController
     {
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            List<GalleryModel> model = await Mediator.Send(new GetGalleryQuery());
+
+            return View(model);
         }
     }
 }

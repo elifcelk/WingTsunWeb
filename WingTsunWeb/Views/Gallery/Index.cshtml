@@ -1,4 +1,9 @@
-﻿<header class="site-header site-gallery-header">
+﻿@{
+    ViewData["Title"] = "Galeri";
+    var index = 0;
+}
+@model IEnumerable<Application.Models.GalleryModel>
+<header class="site-header site-gallery-header">
     <div class="container">
         <div class="row">
 
@@ -15,28 +20,35 @@
 <section>
     <div class="col-lg-12">
         <br /><br />
-        <div class="row"  >
-            <div id="bxslider-gallery" style=" width: 600px;margin:auto;left: 50%;padding: 20px;">
-               <ul class="bxslider-gallery">
-                <li><img src="~/images/gallery/1.jpg" style="margin:auto;"/></li>
-                <li><img src="~/images/gallery/2.jpg" style="margin:auto;" /></li>
-                <li><img src="~/images/gallery/3.jpg" style="margin:auto;" /></li>
-                <li><img src="~/images/gallery/wto1.jpg" style="margin:auto;" /></li>
-            </ul>
-           </div>
-            
+        <div class="row">
+            @if (Model.Count() > 0)
+            {
+                <div class="text-center" id="bxslider-gallery" style=" width: 600px;margin:auto;left: 50%;padding: 20px;">
+                    <ul class="bxslider-gallery">
+                        @foreach (var gallery in Model)
+                        {
+                            <li><img src="@gallery.PhotoPath" style="margin:auto;" /></li>
+                        }
+                    </ul>
+                </div>
 
-            <div id="bx-pager">
-                <a data-slide-index="0" href=""><img src="~/images/gallery/1.jpg" width="72" height="72" /></a>
-                <a data-slide-index="1" href=""><img src="~/images/gallery/2.jpg" width="72" height="72" /></a>
-                <a data-slide-index="2" href=""><img src="~/images/gallery/3.jpg" width="72" height="72" /></a>
-                <a data-slide-index="3" href=""><img src="~/images/gallery/wto1.jpg" width="72" height="72" /></a>
-            </div>
+                <div id="bx-pager">
+                    @foreach (var data in Model)
+                    {
+                        <a data-slide-index="@index" href=""><img src="@data.PhotoPath" width="72" height="72" /></a>
+
+                        index = index + 1;
+                    }
+                </div>
+            }
+            else
+            {
+                <p>Görsel bulunmamaktadır</p>
+            }
         </div>
-        
     </div>
-       
-    
+
+
 </section>
 @section Scripts{
     <script src="~/lib/bxSlider/js/bxslider.min.js" asp-append-version="true"></script>
@@ -47,4 +59,4 @@
             slideMargin: 10
         });
     </script>
-};
+}

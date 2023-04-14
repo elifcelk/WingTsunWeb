@@ -82,6 +82,16 @@ namespace Persistence.Context
 
                 entity.Property(p => p.CreatedTime).HasColumnType("timestamp without time zone").HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
             });
+            modelBuilder.Entity<Gallery>(entity =>
+            {
+                entity.ToTable("Galleries");
+                entity.HasKey(e => e.Id).HasName("PK_Gallery_Id");
+
+                entity.Property(p => p.Id).HasColumnType("uuid").HasDefaultValueSql("gen_random_uuid()").IsRequired().ValueGeneratedOnAdd();
+
+
+                entity.Property(p => p.CreatedTime).HasColumnType("timestamp without time zone").HasDefaultValueSql("NOW()").ValueGeneratedOnAdd();
+            });
 
             base.OnModelCreating(modelBuilder);
 
@@ -92,6 +102,7 @@ namespace Persistence.Context
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<Announcement> Announcements { get ; set; }
         public DbSet<Video> Videos { get; set; }
+        public DbSet<Gallery> Galleries { get; set; }
 
         public async Task<int> SaveChangesAsync()
         {

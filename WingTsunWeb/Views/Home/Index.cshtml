@@ -8,14 +8,14 @@
     IEnumerable<Application.Models.VideoModel> videos = ViewBag.GetVideos;
 }
 
-<section>
-    <div class="slider">
+<section class="menu section-padding">
+    <div class="slider" style="position:relative;">
         @if (sliders.Count() > 0)
         {
             foreach (var slider in sliders)
             {
                 <div>
-                    <img src="@slider.ImageURL" title="@slider.Title" style="margin:auto;">
+                    <img src="@slider.ImageURL" title="@slider.Title"  style="margin:auto;width:900px; height:500px;">
                 </div>
             }
         }
@@ -77,7 +77,7 @@
                         <div class="news-text-info">
                             @{
                                 var color = announcement.AnnouncementType.GetAttribute<ColorAttribute>().Name;
-                                <span class="category-tag me-3 bg-@color">@EnumHelper.GetDisplayName(announcement.AnnouncementType)</span>
+                                                                <span class="category-tag me-3 bg-@color">@EnumHelper.GetDisplayName(announcement.AnnouncementType)</span>
                             }
 
 
@@ -133,14 +133,16 @@
                 autoControls: true,
                 stopAutoOnClick: false,
                 pager: true,
-                slideWidth: 10000,
-                adaptiveHeight: true,
+                slideWidth: 2000,
+                //adaptiveHeight: true,
                 captions: true,
+                responsive: true,
+                
             });
             $('.sliderVideo').bxSlider({
                 minSlides: 2,
                 maxSlides: 2,
-                slideWidth: 700,
+                slideWidth: 800,
                 slideMargin: 10
             });
         });

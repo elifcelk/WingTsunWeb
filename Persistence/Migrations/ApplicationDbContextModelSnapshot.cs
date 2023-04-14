@@ -63,6 +63,34 @@ namespace Persistence.Migrations
                     b.ToTable("Announcements", "public");
                 });
 
+            modelBuilder.Entity("Domain.Entities.Gallery", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid")
+                        .HasDefaultValueSql("gen_random_uuid()");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("timestamp without time zone")
+                        .HasDefaultValueSql("NOW()");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("PhotoPath")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<DateTime>("UpdatedTime")
+                        .HasColumnType("timestamp without time zone");
+
+                    b.HasKey("Id")
+                        .HasName("PK_Gallery_Id");
+
+                    b.ToTable("Galleries", "public");
+                });
+
             modelBuilder.Entity("Domain.Entities.School", b =>
                 {
                     b.Property<Guid>("Id")
