@@ -1,8 +1,14 @@
+using Application;
+using Application.Admin;
+using Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
-builder.Services.AddMvc();
-builder.Services.AddRazorPages();
+
+builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
+builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddApplicationAdmin(builder.Configuration);
 
 var app = builder.Build();
 
@@ -28,6 +34,5 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAuthorization();
 
-app.MapRazorPages();
 
 app.Run();

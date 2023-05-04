@@ -91,7 +91,7 @@
             <nav class="sidebar sidebar-offcanvas" id="sidebar">
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="@Url.Action("Index","Home")">
                             <i class="mdi mdi-grid-large menu-icon"></i>
                             <span class="menu-title">Anasayfa</span>
                         </a>
@@ -105,8 +105,8 @@
                         </a>
                         <div class="collapse" id="sliders">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Slider Ekle</a></li>
-                                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Slider Listesi</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Create","Slider")">Slider Ekle</a></li>
+                                <li class="nav-item"><a class="nav-link" href="@Url.Action("Index","Slider")">Slider Listesi</a></li>
                             </ul>
                         </div>
                     </li>
@@ -118,8 +118,8 @@
                         </a>
                         <div class="collapse" id="schools">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Okul Ekle</a></li>
-                                <li class="nav-item"><a class="nav-link" href="pages/forms/basic_elements.html">Okul Listesi</a></li>
+                                <li class="nav-item"><a class="nav-link" href="school/create">Okul Ekle</a></li>
+                                <li class="nav-item"><a class="nav-link" href="school/list">Okul Listesi</a></li>
                             </ul>
                         </div>
                     </li>
@@ -131,8 +131,8 @@
                         </a>
                         <div class="collapse" id="announcements">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Duyuru Ekle</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Duyuru Listesi</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="announcement/create">Duyuru Ekle</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="announcement/list">Duyuru Listesi</a></li>
                             </ul>
                         </div>
                     </li>
@@ -144,8 +144,8 @@
                         </a>
                         <div class="collapse" id="gallery">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Resim Ekle</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/icons/mdi.html">Resim Listesi</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="gallery/create">Resim Ekle</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="gallery/list">Resim Listesi</a></li>
                             </ul>
                         </div>
                     </li>
@@ -157,8 +157,8 @@
                         </a>
                         <div class="collapse" id="video">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Video Ekle</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="pages/tables/basic-table.html">Video Listesi</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="video/create">Video Ekle</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="video/list">Video Listesi</a></li>
                             </ul>
                         </div>
                     </li>

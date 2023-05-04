@@ -7,6 +7,7 @@ builder.Services.AddControllersWithViews().AddRazorRuntimeCompilation();
 builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplication(builder.Configuration);
 
+
 //builder.Services.AddShared(builder.Configuration);
 
 var app = builder.Build();
