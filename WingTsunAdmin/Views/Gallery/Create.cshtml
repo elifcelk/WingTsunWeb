@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Resim Ekle";
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card" style="margin:auto;">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Resim Ekle</h4>
+                    <form class="forms-sample" id="addPhotoForm">
+                        <div class="form-group">
+                            <label for="imageUrl">Resim</label>
+                            <input required type="file" class="form-control" name="file" id="file" accept=".jpg,.png,.jpeg">
+                        </div>
+
+                        <button class="btn btn-danger"><a href="@Url.Action("Index","Gallery")" style="color:white;">İptal Ve Listeye Dön</a></button>
+                        <button type="submit" class="btn btn-primary addPhoto" style="float:right;">Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Gallery/create.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/vendors/jquery-validation/jquery.validate.min.js"></script>
+}
