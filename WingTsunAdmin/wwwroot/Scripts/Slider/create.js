@@ -60,7 +60,7 @@ function AddSlider() {
                     }
                     else {
                         alert("İşlem başarılı");
-                        location.reload();
+                        window.location.href = 'list'
                     }
                 }
             });

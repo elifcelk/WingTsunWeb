@@ -1,13 +1,8 @@
 ﻿using Application.Admin.DTOs.Gallery;
-using Application.Admin.DTOs.Slider;
 using Application.Admin.Features.GalleryFeatures.Commands;
 using Application.Admin.Features.GalleryFeatures.Queries;
-using Application.Admin.Features.SliderFeatures.Commands;
-using Application.Admin.Features.SliderFeatures.Queries;
-using Application.Admin.Models.Slider;
-using MediatR;
+using Application.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using WingTsunAdmin.Infrastructure;
 
 namespace WingTsunAdmin.Controllers

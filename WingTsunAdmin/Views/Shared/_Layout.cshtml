@@ -52,10 +52,10 @@
                     </button>
                 </div>
                 <div>
-                    <a class="navbar-brand brand-logo" href="index.html">
+                    <a class="navbar-brand brand-logo" href="@Url.Action("Index","Home")">
                         <img src="~/images/logo.svg" alt="logo" />
                     </a>
-                    <a class="navbar-brand brand-logo-mini" href="index.html">
+                    <a class="navbar-brand brand-logo-mini" href="@Url.Action("Index","Home")">
                         <img src="~/images/logo-mini.svg" alt="logo" />
                     </a>
                 </div>
@@ -65,11 +65,10 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <img class="img-xs rounded-circle" src="~/images/faces/face8.jpg" alt="Profile image">
+                            <h4 class="mb-1 mt-3">Elif Çelik</h4>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                             <div class="dropdown-header text-center">
-                                <img class="img-md rounded-circle" src="~/images/faces/face8.jpg" alt="Profile image">
                                 <p class="mb-1 mt-3 font-weight-semibold">Elif Çelik</p>
                                 <p class="fw-light text-muted mb-0">elifcelikk99@gmail.com</p>
                             </div>
@@ -157,8 +156,8 @@
                         </a>
                         <div class="collapse" id="video">
                             <ul class="nav flex-column sub-menu">
-                                <li class="nav-item"> <a class="nav-link" href="video/create">Video Ekle</a></li>
-                                <li class="nav-item"> <a class="nav-link" href="video/list">Video Listesi</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Create","Video")">Video Ekle</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Video")">Video Listesi</a></li>
                             </ul>
                         </div>
                     </li>

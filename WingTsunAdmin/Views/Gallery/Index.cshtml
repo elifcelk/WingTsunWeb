@@ -23,7 +23,7 @@
                                     @foreach (var gallery in Model)
                                     {
                                         <tr>
-                                            <td><img src="https://localhost:7006/@gallery.PhotoPath" style="height:200px;width:200px;" /></td>
+                                            <td><img src="@ViewBag.WebUrl@gallery.PhotoPath" style="height:200px;width:200px;" /></td>
                                             <td>
                                                 @if (gallery.IsDeleted == true)
                                                 {

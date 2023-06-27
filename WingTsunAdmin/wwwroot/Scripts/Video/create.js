@@ -1,5 +1,15 @@
 ﻿$(document).ready(function () {
-    $("#addPhotoForm").validate({
+    $("#addVideoForm").validate({
+        rules: {
+            videoUrl: {
+                required: true
+            }
+        },
+        messages: {
+            videoUrl: {
+                required: "Link ekleyiniz."
+            }
+        },
         errorElement: 'div',
         errorPlacement: function (error, element) {
             var placement = $(element).data('error');
@@ -11,16 +21,16 @@
             }
         },
         submitHandler: function (form) {
-            AddPhoto();
+            AddVideo();
             return false;
         }
     });
 });
-function AddPhoto() {
+function AddVideo() {
     var formData = new FormData();
-    formData.append("file", document.getElementById("file").files[0]);
+    formData.append("videoUrl", $("#videoUrl").val());
 
-    fetch('/Gallery/Create', {
+    fetch('/Video/Create', {
         method: 'POST',
         body: formData
     }).then(response => {
@@ -30,7 +40,7 @@ function AddPhoto() {
         else {
             response.json().then(result => {
                 if (!result.succeeded) {
-                    alert("Resim yüklemediniz");
+                    alert("Hata oluştu");
                     location.reload();
                 }
                 else {

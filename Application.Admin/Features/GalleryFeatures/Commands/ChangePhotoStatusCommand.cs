@@ -1,5 +1,5 @@
 ﻿using Application.Admin.Features.SliderFeatures.Commands;
-using Application.Admin.Models.Slider;
+using Application.Admin.Models;
 using Application.Interfaces;
 using Application.Wrappers;
 using Domain.Entities;

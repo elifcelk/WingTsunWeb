@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Video Ekle";
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card" style="margin:auto;">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Video Ekle</h4>
+                    <form class="forms-sample" id="addVideoForm">
+                        <p>Ekleyeceğiniz Youtube videosunun linki şu formatta olmalıdır: <br /><span><b>Örnek: https://www.youtube.com/embed/watchId</b></span></p>
+                        <div class="form-group">
+                            <label for="videoUrl">Video Linki</label>
+                            <input required type="text" class="form-control" name="videoUrl" id="videoUrl">
+                        </div>
+
+                        <button class="btn btn-danger"><a href="@Url.Action("Index","Video")" style="color:white;">İptal Ve Listeye Dön</a></button>
+                        <button type="submit" class="btn btn-primary" style="float:right;">Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Video/create.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/vendors/jquery-validation/jquery.validate.min.js"></script>
+}

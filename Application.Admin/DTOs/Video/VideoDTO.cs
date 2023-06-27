@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Application.Admin.Models.Slider
+namespace Application.Admin.DTOs.Video
 {
-    public class ChangeModel
+    public class VideoDTO
     {
-        public Guid Id { get; set; }
+        public string VideoUrl { get; set; }
     }
 }

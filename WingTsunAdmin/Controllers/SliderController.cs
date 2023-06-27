@@ -1,7 +1,7 @@
 ﻿using Application.Admin.DTOs.Slider;
 using Application.Admin.Features.SliderFeatures.Commands;
 using Application.Admin.Features.SliderFeatures.Queries;
-using Application.Admin.Models.Slider;
+using Application.Admin.Models;
 using Application.Features.GalleryFeatures.Queries;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +31,7 @@ namespace WingTsunAdmin.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<ActionResult> Create(SliderDTO model)
+        public async Task<ActionResult> Create(SliderDTO model) 
         {
             var files = HttpContext.Request.Form.Files;
 
