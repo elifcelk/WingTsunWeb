@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Okul Listesi";
+}
+@model IEnumerable<Application.Admin.Models.School.SchoolViewModel>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Okul Listesi</h4>
+                    <div class="table-responsive">
+                        @if (Model.Count() > 0)
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Kapak Resmi</th>
+                                        <th>Adı</th>
+                                        <th>Şube</th>
+                                        <th>Eğitmen Adı</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var school in Model)
+                                    {
+                                        <tr>
+                                            <td><img src="@ViewBag.WebUrl@school.PhotoPath" style="height:200px;width:200px;" /></td>
+                                            <td>@school.Name</td>
+                                            <td>@school.CityName/@school.DistrictName </td>
+                                            <td>@school.InstructorName</td>
+                                            <td>
+                                                <a href="@Url.Action("detail", new{id = school.Id})" class="btn btn-success button-sm">Detay</a>
+                                                <button data-id="@school.Id" type="button" class="btn btn-danger button-sm deleteButton">Sil</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>Kayıtlı okul bulunmamaktadır.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/School/index.js" asp-append-version="true"></script>
+}

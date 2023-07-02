@@ -7,7 +7,6 @@ $(".changeStatus").on("click", function () {
     ChangeStatus(id);
 });
 function ChangeStatus(id) {
-    console.log(id);
     var formData = new FormData();
     formData.append("id", id);
     fetch('/Slider/ChangeStatus', {

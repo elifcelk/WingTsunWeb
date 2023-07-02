@@ -1,0 +1,70 @@
+﻿@{
+    ViewData["Title"] = "Okul Detayı";
+}
+@model Application.Admin.DTOs.School.SchoolDTO
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card" style="margin:auto;">
+            <div class="card">
+                <div class="card-body">
+                    <a href="@Url.Action("Index","School")" style="color:red;float:right;">Listeye Dön</a>
+                    <h4 class="card-title">Okul Detayı</h4>
+                    <form class="forms-sample" id="viewSchoolForm">
+                        <input type="hidden" class="form-control" id="id" value="@Model.Id">
+                        <div class="form-group">
+                            <label for="name">Okul Adı</label>
+                            <input type="text" class="form-control" id="name" name="name" value="@Model.Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cityName">İl</label>
+                            <input type="text" class="form-control" id="cityName" name="cityName" value="@Model.CityName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="districtName">İlçe</label>
+                            <input type="text" class="form-control" id="districtName" name="districtName" value="@Model.DistrictName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Adres</label>
+                            <textarea type="text" class="form-control" id="address" name="address" required>@Model.Address</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">İletişim Numarası</label>
+                            <input type="tel" class="form-control" id="phone" name="phone" placeholder="0XXX XXX XX XX" value="@Model.Phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorName">Eğitmen adı</label>
+                            <input type="text" class="form-control" id="instructorName" name="instructorName" value="@Model.InstructorName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorStatus">Eğitmen Derecesi</label>
+                            <input type="text" class="form-control" id="instructorStatus" name="instructorStatus" value="@Model.InstructorStatus" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="instructorResume">Eğitmen Geçmişi</label>
+                            <textarea type="text" class="form-control" id="instructorResume" name="instructorResume" required>@Model.InstructorResume</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="timetable">Eğitim Saati</label>
+                            <input type="text" class="form-control" id="timetable" name="timetable" value="@Model.Timetable" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="photoPath">Kapak Resmi</label><br />
+                            <img src="@ViewBag.WebUrl@Model.PhotoPath" style="height:200px;width:200px;" /><br /><br />
+                            <input type="file" class="form-control" name="file" id="file" accept=".jpg,.png,.jpeg">
+                        </div>
+                        <div class="form-group">
+                            <label for="mapLink">Adres Linki (Google Maps)</label>
+                            <input type="text" class="form-control" id="mapLink" name="mapLink" value="@Model.MapLink" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="float:right;">Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/School/view.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/vendors/jquery-validation/jquery.validate.min.js"></script>
+}

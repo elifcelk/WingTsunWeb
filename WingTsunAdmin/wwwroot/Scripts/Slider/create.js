@@ -34,7 +34,6 @@
 });
 
 function AddSlider() {
-    console.log("1111");
     var formData = new FormData();
     formData.append("file", document.getElementById("file").files[0]);
     formData.append("title", $("#title").val());

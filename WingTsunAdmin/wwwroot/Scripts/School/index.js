@@ -1,15 +1,14 @@
 ﻿$(document).ready(function () {
-    $(".changeStatus").on("click", function () {
+    $(".deleteButton").on("click", function () {
         var id = $(this).attr("data-id");
-        ChangeStatus(id);
+        DeleteSchool(id);
     });
 });
 
-
-function ChangeStatus(id) {
+function DeleteSchool(id) {
     var formData = new FormData();
     formData.append("id", id);
-    fetch('/Gallery/ChangeStatus', {
+    fetch('/School/Delete', {
         method: 'POST',
         body: formData
     }).then(response => {
