@@ -1,0 +1,63 @@
+﻿@using Application.Helpers;
+@{
+    ViewData["Title"] = "Duyuru Detayı";
+}
+@model Application.Admin.DTOs.Announcement.AnnouncementDTO
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card" style="margin:auto;">
+            <div class="card">
+                <div class="card-body">
+                    <a href="@Url.Action("Index","Announcement")" style="color:red;float:right;">Listeye Dön</a>
+                    <h4 class="card-title">Duyuru Detayı</h4>
+                    <form class="forms-sample" id="viewAnnouncementForm">
+                        <input type="hidden" class="form-control" id="id" value="@Model.Id">
+                        <div class="form-group">
+                            <label for="name">Başlık</label>
+                            <input type="text" class="form-control" id="name" name="name" value="@Model.Name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="type">Duyuru Tipi</label><br />
+                            <select name="type" id="type">
+                                @if (Model.Type == 0)
+                                {
+                                    <option value="0" selected>@EnumHelper.GetDisplayName(Domain.Enums.Enums.AnnouncementType.Seminer)</option>
+                                    <option value="1">@EnumHelper.GetDisplayName(Domain.Enums.Enums.AnnouncementType.Duyuru)</option>
+                                    <option value="2">@EnumHelper.GetDisplayName(Domain.Enums.Enums.AnnouncementType.Bilgi)</option>
+                                }
+                                else if (Model.Type == 1)
+                                {
+                                    <option value="0">@EnumHelper.GetDisplayName(Domain.Enums.Enums.AnnouncementType.Seminer)</option>
+                                    <option value="1" selected>@EnumHelper.GetDisplayName(Domain.Enums.Enums.AnnouncementType.Duyuru)</option>
+                                    <option value="2">@EnumHelper.GetDisplayName(Domain.Enums.Enums.AnnouncementType.Bilgi)</option>
+                                }
+                                else
+                                {
+                                    <option value="0">@EnumHelper.GetDisplayName(Domain.Enums.Enums.AnnouncementType.Seminer)</option>
+                                    <option value="1">@EnumHelper.GetDisplayName(Domain.Enums.Enums.AnnouncementType.Duyuru)</option>
+                                    <option value="2" selected>@EnumHelper.GetDisplayName(Domain.Enums.Enums.AnnouncementType.Bilgi)</option>
+                                }
+
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">İçerik</label>
+                            <textarea type="text" class="form-control" id="content" name="content" required>@Model.Content</textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="mainImage">Kapak Resmi</label>
+                            <img src="@ViewBag.WebUrl@Model.MainImage" style="height:200px;width:200px;" /><br /><br />
+                            <input required type="file" class="form-control" name="file" id="file" accept=".jpg,.png,.jpeg">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary" style="float:right;">Güncelle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Announcement/view.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/vendors/jquery-validation/jquery.validate.min.js"></script>
+}

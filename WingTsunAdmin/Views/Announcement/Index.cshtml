@@ -1,0 +1,60 @@
+﻿@using Application.Helpers;
+@using Domain.Common.Attributes;
+@{
+    ViewData["Title"] = "Duyuru Listesi";
+}
+@model IEnumerable<Application.Admin.Models.Announcement.AnnouncementIndexModel>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Duyuru Listesi</h4>
+                    <div class="table-responsive">
+                        @if (Model.Count() > 0)
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Kapak Resmi</th>
+                                        <th>Başlık</th>
+                                        <th>Oluşturma Tarihi</th>
+                                        <th>Duyuru Tipi</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var announcement in Model.OrderByDescending(k => k.CreatedTime))
+                                    {
+                                        <tr>
+                                            <td><img src="@ViewBag.WebUrl@announcement.MainImage" style="height:200px;width:200px;" /></td>
+                                            <td>@announcement.Title</td>
+                                            <td>@(announcement.CreatedTime.ToShortDateString()) </td>
+                                            <td>
+                                                @{
+                                                    var color = announcement.AnnouncementType.GetAttribute<ColorAttribute>().Name;
+                                                    <span class="category-tag me-3 bg-@color">@EnumHelper.GetDisplayName(announcement.AnnouncementType)</span>
+                                                }
+                                            </td>
+                                            <td>
+                                                <a href="@Url.Action("detail", new{id = announcement.Id})" class="btn btn-success button-sm">Detay</a>
+                                                <button data-id="@announcement.Id" type="button" class="btn btn-danger button-sm deleteButton">Sil</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>Kayıtlı duyuru bulunmamaktadır.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Announcement/index.js" asp-append-version="true"></script>
+}

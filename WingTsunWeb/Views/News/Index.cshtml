@@ -28,7 +28,7 @@
                         <div class="row">
 
                             <div class="col-lg-3 col-12 mb-2">
-                                <a href="news-detail.html">
+                                <a href="@Url.Action("Detail","News", new {announcementId = announcement.Id})">
                                     <img src="@announcement.MainImage" class="img-fluid news-image" alt="">
                                 </a>
                             </div>
