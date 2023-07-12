@@ -1,4 +1,5 @@
-﻿<header class="site-header site-about-header">
+﻿@model IEnumerable<Application.Models.AboutIndexModel>
+<header class="site-header site-about-header">
     <div class="container">
         <div class="row">
 
@@ -15,24 +16,22 @@
 <section class="about section-padding bg-white">
     <div class="container">
         <div class="row">
-
             <div class="col-lg- col-12 mb-2">
-                <h4 class="mb-3">Sifu Serhat DEMİR</h4>
+                @if (Model != null && Model.Count() > 0)
+                {
+                    @foreach (var data in Model)
+                    {
+                        <h4 class="mb-3">@data.Title</h4>
 
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a ante sed velit dignissim sollicitudin. Proin tristique congue leo et ultricies. Sed bibendum dui in nulla volutpat, eget vulputate nisi scelerisque. Aenean tincidunt risus at nisi vulputate, sit amet ullamcorper risus commodo. Maecenas consequat lacus eu aliquet vulputate. Aenean aliquet auctor ipsum sit amet porta. Nam nisl eros, bibendum at volutpat ut, dictum in nulla.
-                </p>
-                <p>
-                Curabitur finibus diam augue, sed egestas ante faucibus id. Nullam ex leo, tincidunt vitae justo ut, congue tempor turpis. Suspendisse pretium sem dui, vel auctor metus porttitor in. Vestibulum tincidunt, diam a pharetra lobortis, nunc massa pulvinar lorem, nec luctus lacus nulla et odio. Sed nec auctor massa. Pellentesque congue porta tortor a elementum. Curabitur nisi felis, tempus a venenatis a, sodales non tellus. Mauris condimentum ex urna, vitae pellentesque massa eleifend sed.
-                </p>
-                <h4 class="mb-3">Sihing Emre YALNIZLAR</h4>
-
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque a ante sed velit dignissim sollicitudin. Proin tristique congue leo et ultricies. Sed bibendum dui in nulla volutpat, eget vulputate nisi scelerisque. Aenean tincidunt risus at nisi vulputate, sit amet ullamcorper risus commodo. Maecenas consequat lacus eu aliquet vulputate. Aenean aliquet auctor ipsum sit amet porta. Nam nisl eros, bibendum at volutpat ut, dictum in nulla.
-                </p>
-                <p>
-                    Curabitur finibus diam augue, sed egestas ante faucibus id. Nullam ex leo, tincidunt vitae justo ut, congue tempor turpis. Suspendisse pretium sem dui, vel auctor metus porttitor in. Vestibulum tincidunt, diam a pharetra lobortis, nunc massa pulvinar lorem, nec luctus lacus nulla et odio. Sed nec auctor massa. Pellentesque congue porta tortor a elementum. Curabitur nisi felis, tempus a venenatis a, sodales non tellus. Mauris condimentum ex urna, vitae pellentesque massa eleifend sed.
-                </p>
+                        <p>
+                            @data.Text
+                        </p><br />
+                    }
+                }
+                else
+                {
+                    <p>Kayıtlı hakkımızda alanı bulunmamaktadır.</p>
+                }
             </div>
 
         </div>

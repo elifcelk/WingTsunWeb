@@ -17,13 +17,15 @@ namespace WingTsunWeb.Controllers
             ViewBag.GetVideos = await Mediator.Send(new GetVideosQuery());
             return View();
         }
-        public IActionResult Contact()
+        public async Task<IActionResult> Contact()
         {
-            return View();
+            var model = await Mediator.Send(new GetAllContactQuery());
+            return View(model);
         }
-        public IActionResult About()
+        public async Task<IActionResult> About()
         {
-            return View();
+            var model = await Mediator.Send(new GetAllAboutQuery());
+            return View(model);
         }
     }
 }
