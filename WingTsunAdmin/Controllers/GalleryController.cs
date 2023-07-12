@@ -42,7 +42,7 @@ namespace WingTsunAdmin.Controllers
                 {
                     await file.CopyToAsync(stream);
                 }
-                model.PhotoPath = "/images/gallery/" + file.FileName;
+                model.PhotoPath = "images/gallery/" + file.FileName;
             }
             else
             {

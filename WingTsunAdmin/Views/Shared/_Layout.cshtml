@@ -111,7 +111,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#schools" aria-expanded="false" aria-controls="schools">
-                            <i class="menu-icon mdi mdi-chart-line"></i>
+                            <i class="menu-icon mdi mdi-office-building"></i>
                             <span class="menu-title">Okullar</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -124,7 +124,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#announcements" aria-expanded="false" aria-controls="announcements">
-                            <i class="menu-icon mdi mdi-table"></i>
+                            <i class="menu-icon mdi mdi-bell"></i>
                             <span class="menu-title">Duyurular</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -137,7 +137,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#gallery" aria-expanded="false" aria-controls="gallery">
-                            <i class="menu-icon mdi mdi-layers-outline"></i>
+                            <i class="menu-icon mdi mdi-camera"></i>
                             <span class="menu-title">Galeri</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -150,7 +150,7 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" data-bs-toggle="collapse" href="#video" aria-expanded="false" aria-controls="video">
-                            <i class="menu-icon mdi mdi-table"></i>
+                            <i class="menu-icon mdi mdi-video"></i>
                             <span class="menu-title">Videolar</span>
                             <i class="menu-arrow"></i>
                         </a>
@@ -158,6 +158,32 @@
                             <ul class="nav flex-column sub-menu">
                                 <li class="nav-item"> <a class="nav-link" href="@Url.Action("Create","Video")">Video Ekle</a></li>
                                 <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Video")">Video Listesi</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#contact" aria-expanded="false" aria-controls="contact">
+                            <i class="menu-icon mdi mdi-phone"></i>
+                            <span class="menu-title">İletişim</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="contact">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Create","Contact")">İletişim Ekle</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","Contact")">İletişim Listesi</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="collapse" href="#about" aria-expanded="false" aria-controls="about">
+                            <i class="menu-icon mdi mdi-book"></i>
+                            <span class="menu-title">Hakkımızda</span>
+                            <i class="menu-arrow"></i>
+                        </a>
+                        <div class="collapse" id="about">
+                            <ul class="nav flex-column sub-menu">
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Create","About")">Hakkımızda Ekle</a></li>
+                                <li class="nav-item"> <a class="nav-link" href="@Url.Action("Index","About")">Hakkımızda Listesi</a></li>
                             </ul>
                         </div>
                     </li>

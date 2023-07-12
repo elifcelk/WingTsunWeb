@@ -1,0 +1,52 @@
+﻿@using Application.Helpers;
+@using Domain.Common.Attributes;
+@{
+    ViewData["Title"] = "İletişim Listesi";
+}
+@model IEnumerable<Application.Admin.Models.Contact.ContactIndexModel>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">İletişim Listesi</h4>
+                    <div class="table-responsive">
+                        @if (Model != null && Model.Count() > 0)
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Başlık</th>
+                                        <th>Telefon Numarası</th>
+                                        <th>Oluşturma Tarihi</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var contact in Model.OrderByDescending(k => k.CreatedTime))
+                                    {
+                                        <tr>
+                                            <td>@contact.Title</td>
+                                            <td>@contact.PhoneNumber</td>
+                                            <td>@(contact.CreatedTime.ToShortDateString()) </td>
+                                            <td>
+                                                <button data-id="@contact.Id" type="button" class="btn btn-danger button-sm deleteButton">Sil</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>Kayıtlı iletişim bulunmamaktadır.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Contact/index.js" asp-append-version="true"></script>
+}

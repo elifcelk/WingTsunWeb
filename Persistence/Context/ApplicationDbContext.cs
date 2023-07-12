@@ -103,6 +103,9 @@ namespace Persistence.Context
         public DbSet<Announcement> Announcements { get ; set; }
         public DbSet<Video> Videos { get; set; }
         public DbSet<Gallery> Galleries { get; set; }
+        public DbSet<AdminUser> AdminUsers { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<About> Abouts { get; set; }
 
         public async Task<int> SaveChangesAsync()
         {
