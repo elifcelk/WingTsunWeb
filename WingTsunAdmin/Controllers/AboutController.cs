@@ -24,6 +24,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("about/list")]
         public async Task<IActionResult> Index()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var model = await Mediator.Send(new GetAllAboutForAdminQuery());
             return View(model);
         }
@@ -31,6 +35,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("about/create")]
         public ActionResult Create()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View();
         }
 
@@ -52,6 +60,10 @@ namespace WingTsunAdmin.Controllers
 
         public async Task<ActionResult> Detail(Guid id)
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var model = await Mediator.Send(new GetAboutDetailForAdminQuery(id));
             return View(model);
         }

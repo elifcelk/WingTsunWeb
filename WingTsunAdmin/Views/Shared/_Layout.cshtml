@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{
+    var currentUser = (Application.Admin.Models.Admin.LoginModel)ViewBag.CurrentUser;
+}
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -21,7 +24,7 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="~/css/vertical-layout-light/style.css">
     <!-- endinject -->
-    <link rel="shortcut icon" href="~/images/favicon.png" />
+    <link rel="shortcut icon" href="~/images/wingTsunLogo.PNG" />
 </head>
 <body>
     <div class="container-scroller">
@@ -53,10 +56,10 @@
                 </div>
                 <div>
                     <a class="navbar-brand brand-logo" href="@Url.Action("Index","Home")">
-                        <img src="~/images/logo.svg" alt="logo" />
+                        <img src="~/images/wingTsunLogo.PNG" alt="logo" />
                     </a>
                     <a class="navbar-brand brand-logo-mini" href="@Url.Action("Index","Home")">
-                        <img src="~/images/logo-mini.svg" alt="logo" />
+                        <img src="~/images/wingTsunLogo.PNG" alt="logo" />
                     </a>
                 </div>
             </div>
@@ -65,16 +68,11 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                         <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                            <h4 class="mb-1 mt-3">Elif Çelik</h4>
+                            <h4 class="mb-1 mt-3">@currentUser.UserName</h4>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
-                            <div class="dropdown-header text-center">
-                                <p class="mb-1 mt-3 font-weight-semibold">Elif Çelik</p>
-                                <p class="fw-light text-muted mb-0">elifcelikk99@gmail.com</p>
-                            </div>
-                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i>Profil <span class="badge badge-pill badge-danger">1</span></a>
 
-                            <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Çıkış Yap</a>
+                            <a href="@Url.Action("LogOut","Admin")" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Çıkış Yap</a>
                         </div>
                     </li>
                 </ul>

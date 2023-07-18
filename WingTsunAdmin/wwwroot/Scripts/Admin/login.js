@@ -33,15 +33,14 @@
     });
 });
 function AddAdminUser() {
-    const data = {
-        userName: $("#userName").val(),
-        password: $("#password").val(),
-    }
+    var formData = new FormData();
+    formData.append("userName", $("#userName").val());
+    formData.append("password", $("#password").val());
+    console.log($("#userName").val(), $("#password").val())
 
     fetch('/Admin/SignIn', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json; charset=UTF-8' },
-        body: JSON.stringify(data)
+        body: formData
     }).then(response => {
         if (!response.ok) {
             alert("Hata");

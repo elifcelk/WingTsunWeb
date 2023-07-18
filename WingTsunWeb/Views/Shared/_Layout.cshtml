@@ -10,7 +10,7 @@
     <title>@ViewData["Title"] - Demir Wing Tsun</title>
 
     <!-- CSS FILES -->
-    
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,10 +19,11 @@
     <link href="~/lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 
     <link href="~/lib/bootstrap/dist/css/bootstrap-icons.css" rel="stylesheet">
-  
+
     <link href="~/lib/wing-chun.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="~/lib/bxSlider/css/bxSlider.css" rel="stylesheet">
+    <link rel="shortcut icon" href="~/images/wingTsunLogo.PNG" />
 </head>
 
 <body>
@@ -34,6 +35,7 @@
             </button>
 
             <a class="navbar-brand" href="@Url.Action("Index","Home")">
+                <img src="~/images/wingTsunLogo.PNG" alt="logo" width="80px" height="80px" />
                 Demir Wing Tsun
             </a>
 
@@ -64,9 +66,9 @@
                 </ul>
             </div>
             <ul class="social-icon">
-                <li><a href="https://www.instagram.com/demirwingtsun/" target="_blank" ><i class="fa-brands fa-instagram fa-xl"></i></a></li>
+                <li><a href="https://www.instagram.com/demirwingtsun/" target="_blank"><i class="fa-brands fa-instagram fa-xl"></i></a></li>
 
-                <li><a href="https://www.youtube.com/&#64;sifuserhatdemir/videos" target="_blank" ><i class="fa-brands fa-youtube fa-xl"></i></a></li>
+                <li><a href="https://www.youtube.com/&#64;sifuserhatdemir/videos" target="_blank"><i class="fa-brands fa-youtube fa-xl"></i></a></li>
             </ul>
 
         </div>
@@ -83,7 +85,10 @@
         <div class="container">
 
             <div class="row">
-                <div class="col-lg-4 col-md-4 col-xs-12 tooplate-mt5">
+                <div class="col-lg-3 col-md-3 col-xs-12 tooplate-mt5" style="margin:auto">
+                    <img src="~/images/wingTsunLogo.PNG" alt="logo" width="200px" height="200px" />
+                </div>
+                <div class="col-lg-3 col-md-3 col-xs-12 tooplate-mt5" style="margin:auto">
                     <h6 class="text-white mb-lg-4 mb-3">Bize Ulaşın</h6>
 
                     <p class="mb-2">Eğitim Koordinatörleri:</p>
@@ -93,7 +98,7 @@
                     <p>Sihing Emre YALNIZLAR : +90 0546 205 7700</p>
                 </div>
 
-                <div class="col-lg-4 col-md-4 col-xs-12 tooplate-mt5">
+                <div class="col-lg-3 col-md-3 col-xs-12 tooplate-mt5">
                     <h6 class="text-white mb-lg-4 mb-3">Sosyal Medya</h6>
 
                     <ul style="margin:auto">
@@ -102,7 +107,8 @@
                         <li style="color:wheat"><a href="https://www.youtube.com/&#64;sifuserhatdemir/videos" target="_blank" <i class="fa-brands fa-youtube fa-xl"></i></a></li>
                     </ul>
                 </div>
-                <div class="col-lg-4 col-md-4 col-xs-12 tooplate-mt5" style="margin:auto">
+                <div class="col-lg-3 col-md-3 col-xs-12 tooplate-mt5">
+                    <h6 class="text-white mb-lg-4 mb-3">Sayfalar</h6>
                     <a href="@Url.Action("Index","Home")">ANASAYFA</a><br />
                     <a href="@Url.Action("About","Home")">HAKKIMIZDA</a><br />
                     <a href="@Url.Action("Index","Schools")">OKULLARIMIZ</a><br />
@@ -110,6 +116,7 @@
                     <a href="@Url.Action("Index","News")">BLOG</a><br />
                     <a href="@Url.Action("Contact","Home")">İLETİŞİM</a><br />
                 </div>
+                
 
             </div><!-- row ending -->
 
@@ -122,7 +129,7 @@
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js" asp-append-version="true"></script>
     <script src="~/js/custom.js"></script>
     <script src="~/js/swiper-bundle.min.js" asp-append-version="true"></script>
-    
+
 
     @await RenderSectionAsync("Scripts",required: false)
 </body>

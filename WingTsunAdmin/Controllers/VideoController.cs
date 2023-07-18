@@ -12,6 +12,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("video/list")]
         public async Task<IActionResult> Index()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var model = await Mediator.Send(new GetAllVideosQuery());
             return View(model);
         }
@@ -19,6 +23,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("video/create")]
         public ActionResult Create()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View();
         }
 

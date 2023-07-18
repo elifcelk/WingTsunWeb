@@ -20,6 +20,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("contact/list")]
         public async Task<IActionResult> Index()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var model = await Mediator.Send(new GetAllContactForAdminQuery());
             return View(model);
         }
@@ -27,6 +31,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("contact/create")]
         public ActionResult Create()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View();
         }
 

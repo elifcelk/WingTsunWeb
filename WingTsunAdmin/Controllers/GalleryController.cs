@@ -17,6 +17,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("gallery/list")]
         public async Task<IActionResult> Index()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var model = await Mediator.Send(new GetAllGalleryQuery());
             ViewBag.WebUrl = configuration.GetSection("Urls:WEB_URL").Value;
             return View(model);
@@ -24,6 +28,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("gallery/create")]
         public ActionResult Create()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View();
         }
 

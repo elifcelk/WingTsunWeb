@@ -22,6 +22,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("school/list")]
         public async Task<IActionResult> Index()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var model = await Mediator.Send(new GetAllSchoolsQuery());
             ViewBag.WebUrl = configuration.GetSection("Urls:WEB_URL").Value;
             return View(model);
@@ -30,6 +34,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("school/create")]
         public ActionResult Create()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View();
         }
         [HttpPost]
@@ -64,6 +72,10 @@ namespace WingTsunAdmin.Controllers
         }
         public async Task<ActionResult> Detail(Guid id)
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var model = await Mediator.Send(new GetSchoolDetailQuery(id));
             ViewBag.WebUrl = configuration.GetSection("Urls:WEB_URL").Value;
             return View(model);

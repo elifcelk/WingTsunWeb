@@ -1,5 +1,6 @@
 using Application;
 using Application.Admin;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,16 +12,25 @@ builder.Services.AddPersistence(builder.Configuration);
 builder.Services.AddApplicationAdmin(builder.Configuration);
 
 
-//builder.Services.AddDistributedMemoryCache();
-//builder.Services.AddSession(options =>
-//{
-//    options.IdleTimeout = TimeSpan.FromSeconds(10);
-//    options.Cookie.HttpOnly = true;
-//    options.Cookie.IsEssential = true;
-//});
-//builder.Services.AddMvc();
-var app = builder.Build();
+builder.Services.AddDistributedMemoryCache();
+builder.Services.AddSession(options =>
+{
+    options.Cookie.Name = "WingTsunAdmin.Session";
+    options.Cookie.MaxAge = TimeSpan.FromHours(4);
+    options.IOTimeout = TimeSpan.FromHours(4);
+    options.IdleTimeout = TimeSpan.FromHours(4);
+});
 
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options =>
+{
+    options.LoginPath = "/Admin/Login";
+    options.Cookie.Name = "WingTsunAdmin.Identity";
+    options.Cookie.MaxAge = TimeSpan.FromHours(4);
+    options.ExpireTimeSpan = TimeSpan.FromHours(4);
+});
+
+var app = builder.Build();
+app.UseSession();
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
@@ -32,16 +42,14 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-//app.UseAuthorization();
-//app.UseAuthentication();
-//app.UseSession();
 
-app.UseEndpoints(endpoints =>
-{
-    endpoints.MapControllerRoute(
-        name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
-});
+app.UseAuthentication();
+app.UseAuthorization();
+
+
+app.MapControllerRoute(
+    name: "default",
+    pattern: "{controller=Admin}/{action=Login}/{id?}");
 
 
 

@@ -21,6 +21,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("slider/list")]
         public async Task<IActionResult> Index()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             var model = await Mediator.Send(new GetAllSliderQuery());
             ViewBag.WebUrl = configuration.GetSection("Urls:WEB_URL").Value;
             return View(model);
@@ -28,6 +32,10 @@ namespace WingTsunAdmin.Controllers
         [HttpGet("slider/create")]
         public ActionResult Create()
         {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
             return View();
         }
         [HttpPost]
@@ -60,17 +68,5 @@ namespace WingTsunAdmin.Controllers
             return Ok(response);
 
         }
-
-        //public async static Task<Image> ResizeImage(this IFormFile file, int width, int height)
-        //{
-        //    using (var memoryStream = new MemoryStream())
-        //    {
-        //        await file.CopyToAsync(memoryStream);
-        //        using (var img = Image.FromStream(memoryStream))
-        //        {
-        //            return img.Resize(width, height);
-        //        }
-        //    }
-        //}
     }
 }

@@ -7,12 +7,14 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.ResponseCaching;
 using System.Security.Claims;
 using WingTsunAdmin.Infrastructure;
+using WingTsunAdmin.Utils;
 
 namespace WingTsunAdmin.Controllers
 {
     public class AdminController : BaseController
     {
         public IActionResult Login(string returnUrl = null)
+        
         {
             if (HttpContext.User.Identity.IsAuthenticated)
             {
@@ -23,38 +25,38 @@ namespace WingTsunAdmin.Controllers
         }
 
         [HttpPost]
-        //public async Task<IActionResult> SignIn([FromBody] AdminUserLoginQuery adminUserLoginQuery)
-        //{
-        //    var response = await Mediator.Send<Response<LoginModel>>(adminUserLoginQuery);
-        //    if (response.Succeeded)
-        //    {
-        //        await HttpContext.Session.LoadAsync();
-        //        if (response.Message != null)
-        //        {
-        //            response.Succeeded = false;
-        //            response.Message = $"Lütfen tekrar deneyin.";
-        //        }
-        //        else
-        //        {
-        //            HttpContext.Session.Set("currentUser", response.Data);
-        //            var claims = new List<Claim>
-        //            {
-        //                new Claim(ClaimTypes.Name, response.Data.UserName),
+        public async Task<IActionResult> SignIn(LoginModel model)
+        {
+            var response = await Mediator.Send(new AdminUserLoginQuery(model.UserName,model.Password));
+            if (response.Succeeded)
+            {
+                await HttpContext.Session.LoadAsync();
+                if (response.Message != null)
+                {
+                    response.Succeeded = false;
+                    response.Message = $"Lütfen tekrar deneyin.";
+                }
+                else
+                {
+                    HttpContext.Session.Set("currentUser", response.Data);
+                    var claims = new List<Claim>
+                    {
+                        new Claim(ClaimTypes.Name, response.Data.UserName),
 
-        //            };
-        //            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
-        //            var authProperties = new AuthenticationProperties
-        //            {
-        //                AllowRefresh = true,
-        //            };
-        //            await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
-        //            await HttpContext.Session.CommitAsync();
-        //        }
+                    };
+                    var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+                    var authProperties = new AuthenticationProperties
+                    {
+                        AllowRefresh = true,
+                    };
+                    await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity), authProperties);
+                    await HttpContext.Session.CommitAsync();
+                }
 
-        //        await HttpContext.Session.CommitAsync();
-        //    }
-        //    return Ok(response);
-        //}
+                await HttpContext.Session.CommitAsync();
+            }
+            return Ok(response);
+        }
 
         public async Task<IActionResult> LogOut()
         {
