@@ -1,4 +1,5 @@
 ﻿using Application.Admin.DTOs.Video;
+using Application.Admin.Features.SliderFeatures.Commands;
 using Application.Admin.Features.VideoFeatures.Commands;
 using Application.Admin.Features.VideoFeatures.Queries;
 using Application.Admin.Models;
@@ -41,6 +42,14 @@ namespace WingTsunAdmin.Controllers
         public async Task<ActionResult> ChangeStatus(ChangeModel model)
         {
             var response = await Mediator.Send(new ChangeVideoStatusCommand(model));
+            return Ok(response);
+
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(ChangeModel model)
+        {
+            var response = await Mediator.Send(new DeleteVideoCommand(model));
             return Ok(response);
 
         }

@@ -1,9 +1,9 @@
-﻿using Application.Admin.Features.GalleryFeatures.Commands;
+﻿using Application.Admin.Features.SliderFeatures.Commands;
 using Application.Admin.Models;
 using Application.Interfaces;
 using Application.Wrappers;
+using Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -13,39 +13,35 @@ using System.Threading.Tasks;
 
 namespace Application.Admin.Features.VideoFeatures.Commands
 {
-    public class ChangeVideoStatusCommand : IRequest<Response<bool>>
+    public class DeleteVideoCommand : IRequest<Response<bool>>
     {
         public ChangeModel model { get; set; }
 
-        public ChangeVideoStatusCommand(ChangeModel model)
+        public DeleteVideoCommand(ChangeModel model)
         {
             this.model = model;
         }
-        public class ChangeVideoStatusCommandHandler : IRequestHandler<ChangeVideoStatusCommand, Response<bool>>
+
+        public class DeleteVideoCommandHandler : IRequestHandler<DeleteVideoCommand, Response<bool>>
         {
             IApplicationDbContext _context;
             IConfiguration configuration;
 
-            public ChangeVideoStatusCommandHandler(IApplicationDbContext context, IConfiguration configuration)
+            public DeleteVideoCommandHandler(IApplicationDbContext context, IConfiguration configuration)
             {
                 _context = context;
                 this.configuration = configuration;
             }
 
-            public async Task<Response<bool>> Handle(ChangeVideoStatusCommand request, CancellationToken cancellationToken)
+            public async Task<Response<bool>> Handle(DeleteVideoCommand request, CancellationToken cancellationToken)
             {
-                var video = _context.Videos.Where(k => k.Id == request.model.Id).FirstOrDefault();
+                Video? video = _context.Videos.Where(k => k.Id == request.model.Id).FirstOrDefault();
                 if (video == null)
                 {
                     return new Response<bool>("Video bulunamadı.");
                 }
-                if (video.IsActive)
-                    video.IsActive = false;
-                else
-                    video.IsActive = true;
 
-                video.UpdatedTime = DateTime.Now;
-
+                _context.Videos.Remove(video);
                 await _context.SaveChangesAsync();
 
                 return new Response<bool>(true);

@@ -24,7 +24,7 @@ namespace Application.Features.HomeFeatures.Queries
 
             public async Task<List<SliderModel>> Handle(GetSlidersQuery request, CancellationToken cancellationToken)
             {
-                List<SliderModel> sliders = await applicationDbContext.Sliders.OrderByDescending(k => k.CreatedTime).Select(k => new SliderModel()
+                List<SliderModel> sliders = await applicationDbContext.Sliders.Where(k => k.IsActive).OrderByDescending(k => k.CreatedTime).Select(k => new SliderModel()
                 {
                     Id = k.Id,
                     CreatedTime = k.CreatedTime,

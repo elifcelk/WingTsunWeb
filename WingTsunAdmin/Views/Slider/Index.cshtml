@@ -29,7 +29,7 @@
                                             <td>@slider.Title</td>
                                             <td>@slider.Description</td>
                                             <td>
-                                                @if (slider.IsDeleted == true)
+                                                @if (slider.IsActive == false)
                                                 {
                                                     <label class="badge badge-danger">Pasif</label>
                                                 }
@@ -39,7 +39,7 @@
                                                 }
                                             </td>
                                             <td>
-                                                @if (slider.IsDeleted == true)
+                                                @if (slider.IsActive == false)
                                                 {
                                                     <button  data-id="@slider.Id" type="button" class="btn btn-success button-sm changeStatus">Aktif Yap</button>
                                                 }
@@ -47,6 +47,7 @@
                                                 {
                                                     <button data-id="@slider.Id" type="button" class="btn btn-danger button-sm changeStatus">Pasif Yap</button>
                                                 }
+                                                <button data-id="@slider.Id" type="button" class="btn btn-danger button-sm deleteButton">Sil</button>
                                             </td>
                                         </tr>
                                     }

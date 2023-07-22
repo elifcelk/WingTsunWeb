@@ -22,13 +22,14 @@ namespace Application.Admin.Features.SliderFeatures.Queries
 
             public async Task<List<SliderViewModel>> Handle(GetAllSliderQuery request, CancellationToken cancellationToken)
             {
-                var sliderList = await dbContext.Sliders.AsNoTracking().IgnoreQueryFilters().Select(k => new SliderViewModel
+                var sliderList = await dbContext.Sliders.AsNoTracking().Select(k => new SliderViewModel
                 {
                     Id = k.Id,
                     Description = k.Description,
                     Title = k.Title,
                     ImageUrl = k.ImageURL,
-                    IsDeleted = k.IsDeleted
+                    IsActive = k.IsActive
+                    
                 }).ToListAsync(cancellationToken: cancellationToken);
 
                 return sliderList;

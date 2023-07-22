@@ -9,12 +9,12 @@
 }
 
 <section class="menu section-padding">
-    <div class="slider" style="position:relative;">
+    <div class="slider" style="margin:auto;position:relative;">
         @if (sliders.Count() > 0)
         {
             foreach (var slider in sliders)
             {
-                <div>
+                <div style="margin:auto;">
                     <img src="@slider.ImageURL" title="@slider.Title"  style="margin:auto;width:900px; height:600px;">
                 </div>
             }

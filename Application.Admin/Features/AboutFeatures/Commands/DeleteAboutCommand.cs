@@ -41,9 +41,7 @@ namespace Application.Admin.Features.AboutFeatures.Commands
                     return new Response<bool>("Hakkımızda alanı bulunamadı.");
                 }
 
-                about.IsDeleted = true;
-
-                about.UpdatedTime = DateTime.Now;
+                _context.Abouts.Remove(about);
 
                 await _context.SaveChangesAsync();
 

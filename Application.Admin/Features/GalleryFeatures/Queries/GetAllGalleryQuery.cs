@@ -25,11 +25,12 @@ namespace Application.Admin.Features.GalleryFeatures.Queries
 
             public async Task<List<GalleryViewModel>> Handle(GetAllGalleryQuery request, CancellationToken cancellationToken)
             {
-                List<GalleryViewModel> allGalleries = await applicationDbContext.Galleries.AsNoTracking().IgnoreQueryFilters().OrderByDescending(k => k.CreatedTime).Select(k => new GalleryViewModel()
+                List<GalleryViewModel> allGalleries = await applicationDbContext.Galleries.AsNoTracking().OrderByDescending(k => k.CreatedTime).Select(k => new GalleryViewModel()
                 {
                     Id = k.Id,
                     PhotoPath = k.PhotoPath,
-                    IsDeleted = k.IsDeleted
+                    IsDeleted = k.IsDeleted,
+                    IsActive = k.IsActive,
                 }).ToListAsync();
 
                 return allGalleries;

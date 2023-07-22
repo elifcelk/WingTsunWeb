@@ -1,4 +1,5 @@
 ﻿using Application.Admin.DTOs.Slider;
+using Application.Admin.Features.SchoolFeatures.Commands;
 using Application.Admin.Features.SliderFeatures.Commands;
 using Application.Admin.Features.SliderFeatures.Queries;
 using Application.Admin.Models;
@@ -65,6 +66,13 @@ namespace WingTsunAdmin.Controllers
         public async Task<ActionResult> ChangeStatus(ChangeModel model)
         {
             var response = await Mediator.Send(new ChangeSliderStatusCommand(model));
+            return Ok(response);
+
+        }
+        [HttpPost]
+        public async Task<ActionResult> Delete(ChangeModel model)
+        {
+            var response = await Mediator.Send(new DeleteSliderCommand(model));
             return Ok(response);
 
         }

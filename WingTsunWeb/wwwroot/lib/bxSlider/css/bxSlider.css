@@ -29,6 +29,7 @@
     *zoom: 1;
     -ms-touch-action: pan-y;
     touch-action: pan-y;
+    margin:auto;
 }
 
     .bx-wrapper img {

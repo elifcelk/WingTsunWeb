@@ -40,9 +40,7 @@ namespace Application.Admin.Features.ContactFeatures.Commands
                     return new Response<bool>("İletişim bulunamadı.");
                 }
 
-                contact.IsDeleted = true;
-
-                contact.UpdatedTime = DateTime.Now;
+                _context.Contacts.Remove(contact);
 
                 await _context.SaveChangesAsync();
 

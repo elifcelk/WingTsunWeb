@@ -10,5 +10,6 @@ namespace Domain.Entities
     public class Gallery : BaseEntity
     {
         public string PhotoPath { get; set; }
+        public bool IsActive { get; set; }
     }
 }

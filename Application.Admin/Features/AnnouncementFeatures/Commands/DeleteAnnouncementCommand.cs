@@ -41,9 +41,7 @@ namespace Application.Admin.Features.AnnouncementFeatures.Commands
                     return new Response<bool>("Duyuru bulunamadı.");
                 }
 
-                announcement.IsDeleted = true;
-
-                announcement.UpdatedTime = DateTime.Now;
+                _context.Announcements.Remove(announcement);
 
                 await _context.SaveChangesAsync();
 

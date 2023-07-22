@@ -25,7 +25,7 @@
                                         <tr>
                                             <td><img src="@ViewBag.WebUrl@gallery.PhotoPath" style="height:200px;width:200px;" /></td>
                                             <td>
-                                                @if (gallery.IsDeleted == true)
+                                                @if (gallery.IsActive == false)
                                                 {
                                                     <label class="badge badge-danger">Pasif</label>
                                                 }
@@ -36,7 +36,7 @@
                                             </td>
                                             
                                             <td>
-                                                @if (gallery.IsDeleted == true)
+                                                @if (gallery.IsActive == false)
                                                 {
                                                     <button data-id="@gallery.Id" type="button" class="btn btn-success button-sm changeStatus">Aktif Yap</button>
                                                 }
@@ -44,6 +44,7 @@
                                                 {
                                                     <button data-id="@gallery.Id" type="button" class="btn btn-danger button-sm changeStatus">Pasif Yap</button>
                                                 }
+                                                <button data-id="@gallery.Id" type="button" class="btn btn-danger button-sm deleteButton">Sil</button>
                                             </td>
                                         </tr>
                                     }

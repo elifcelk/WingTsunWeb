@@ -11,5 +11,6 @@ namespace Application.Admin.Models.Gallery
         public Guid Id { get; set; }
         public string PhotoPath { get; set; }
         public bool IsDeleted { get; set; }
+        public bool IsActive { get; set; }
     }
 }

@@ -10,5 +10,6 @@ namespace Domain.Entities
     public class Video : BaseEntity
     {
         public string Path { get; set; }
+        public bool IsActive { get; set; }
     }
 }

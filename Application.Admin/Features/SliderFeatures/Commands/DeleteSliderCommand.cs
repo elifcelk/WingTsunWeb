@@ -1,9 +1,9 @@
-﻿using Application.Admin.Models;
+﻿using Application.Admin.Features.SchoolFeatures.Commands;
+using Application.Admin.Models;
 using Application.Interfaces;
 using Application.Wrappers;
 using Domain.Entities;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
@@ -13,40 +13,35 @@ using System.Threading.Tasks;
 
 namespace Application.Admin.Features.SliderFeatures.Commands
 {
-    public class ChangeSliderStatusCommand : IRequest<Response<bool>>
+    public class DeleteSliderCommand : IRequest<Response<bool>>
     {
         public ChangeModel model { get; set; }
 
-        public ChangeSliderStatusCommand(ChangeModel model)
+        public DeleteSliderCommand(ChangeModel model)
         {
             this.model = model;
         }
 
-        public class ChangeSliderStatusCommandHandler : IRequestHandler<ChangeSliderStatusCommand, Response<bool>>
+        public class DeleteSliderCommandHandler : IRequestHandler<DeleteSliderCommand, Response<bool>>
         {
             IApplicationDbContext _context;
             IConfiguration configuration;
 
-            public ChangeSliderStatusCommandHandler(IApplicationDbContext context, IConfiguration configuration)
+            public DeleteSliderCommandHandler(IApplicationDbContext context, IConfiguration configuration)
             {
                 _context = context;
                 this.configuration = configuration;
             }
 
-            public async Task<Response<bool>> Handle(ChangeSliderStatusCommand request, CancellationToken cancellationToken)
+            public async Task<Response<bool>> Handle(DeleteSliderCommand request, CancellationToken cancellationToken)
             {
-                Slider? slider =  _context.Sliders.Where(k => k.Id == request.model.Id).FirstOrDefault();
+                Slider? slider = _context.Sliders.Where(k => k.Id == request.model.Id).FirstOrDefault();
                 if (slider == null)
                 {
                     return new Response<bool>("Slider bulunamadı.");
                 }
-                if (!slider.IsActive)
-                    slider.IsActive = true;
-                else
-                    slider.IsActive = false;
 
-                slider.UpdatedTime = DateTime.Now;
-
+                _context.Sliders.Remove(slider);
                 await _context.SaveChangesAsync();
 
                 return new Response<bool>(true);

@@ -24,7 +24,7 @@ namespace Application.Features.GalleryFeatures.Queries
 
             public async Task<List<GalleryModel>> Handle(GetGalleryQuery request, CancellationToken cancellationToken)
             {
-                List<GalleryModel> galleries = await applicationDbContext.Galleries.OrderBy(k => k.CreatedTime).Select(k => new GalleryModel()
+                List<GalleryModel> galleries = await applicationDbContext.Galleries.Where(k => k.IsActive).OrderBy(k => k.CreatedTime).Select(k => new GalleryModel()
                 {
                     Id = k.Id,
                     PhotoPath = k.PhotoPath

@@ -23,7 +23,7 @@
         <div class="row">
             @if (Model.Count() > 0)
             {
-                <div class="text-center" id="bxslider-gallery" style=" width: 600px;margin:auto;left: 50%;padding: 30px;">
+                <div class="text-center" id="bxslider-gallery" style=" width: 1000px;margin:auto;left: 50%;padding: 30px;">
                     <ul class="bxslider-gallery">
                         @foreach (var gallery in Model)
                         {
@@ -31,21 +31,25 @@
                         }
                     </ul>
                 </div>
-
+                
                 <div id="bx-pager">
+                    <br />
                     @foreach (var data in Model)
                     {
                         <a data-slide-index="@index" href=""><img src="@data.PhotoPath" width="72" height="72" /></a>
 
                         index = index + 1;
                     }
+                    
                 </div>
+                
             }
             else
             {
                 <p>Görsel bulunmamaktadır</p>
             }
         </div>
+        <br />
     </div>
 
 

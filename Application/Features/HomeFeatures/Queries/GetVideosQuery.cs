@@ -22,7 +22,7 @@ namespace Application.Features.HomeFeatures.Queries
             }
             public async Task<List<VideoModel>> Handle(GetVideosQuery request, CancellationToken cancellationToken)
             {
-                List<VideoModel> videos = await applicationDbContext.Videos.OrderByDescending(k => k.CreatedTime).Where(k => !k.IsDeleted).Select(k => new VideoModel()
+                List<VideoModel> videos = await applicationDbContext.Videos.Where(k => k.IsActive).OrderByDescending(k => k.CreatedTime).Where(k => !k.IsDeleted).Select(k => new VideoModel()
                 {
                     Id = k.Id,
                     Path = k.Path,

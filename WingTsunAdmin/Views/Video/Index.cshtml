@@ -22,7 +22,7 @@
                                         <tr>
                                             <td><iframe width="320" height="200" src="@video.Path" frameborder="0" allowfullscreen></iframe></td>
                                             <td>
-                                                @if (video.IsDeleted == true)
+                                                @if (video.IsActive == false)
                                                 {
                                                     <label class="badge badge-danger">Pasif</label>
                                                 }
@@ -33,7 +33,7 @@
                                             </td>
 
                                             <td>
-                                                @if (video.IsDeleted == true)
+                                                @if (video.IsActive == false)
                                                 {
                                                     <button data-id="@video.Id" type="button" class="btn btn-success button-sm changeStatus">Aktif Yap</button>
                                                 }
@@ -41,6 +41,7 @@
                                                 {
                                                     <button data-id="@video.Id" type="button" class="btn btn-danger button-sm changeStatus">Pasif Yap</button>
                                                 }
+                                                <button data-id="@video.Id" type="button" class="btn btn-danger button-sm deleteButton">Sil</button>
                                             </td>
                                         </tr>
                                     }

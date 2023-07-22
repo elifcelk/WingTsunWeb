@@ -1,6 +1,7 @@
 ﻿using Application.Admin.DTOs.Gallery;
 using Application.Admin.Features.GalleryFeatures.Commands;
 using Application.Admin.Features.GalleryFeatures.Queries;
+using Application.Admin.Features.SliderFeatures.Commands;
 using Application.Admin.Models;
 using Microsoft.AspNetCore.Mvc;
 using WingTsunAdmin.Infrastructure;
@@ -66,6 +67,14 @@ namespace WingTsunAdmin.Controllers
         public async Task<ActionResult> ChangeStatus(ChangeModel model)
         {
             var response = await Mediator.Send(new ChangePhotoStatusCommand(model));
+            return Ok(response);
+
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(ChangeModel model)
+        {
+            var response = await Mediator.Send(new DeleteGalleryCommand(model));
             return Ok(response);
 
         }

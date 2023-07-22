@@ -37,7 +37,8 @@ namespace Application.Admin.Features.SliderFeatures.Commands
                     Description = request.model.Description,
                     Title = request.model.Title,
                     ImageURL = request.model.ImageURL,
-                    CreatedTime = DateTime.Now
+                    CreatedTime = DateTime.Now,
+                    IsActive = true
                 };
 
                 _context.Sliders.Add(slider);
