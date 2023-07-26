@@ -106,6 +106,8 @@ namespace Persistence.Context
         public DbSet<AdminUser> AdminUsers { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<About> Abouts { get; set; }
+        public DbSet<SocialMedia> SocialMedias { get; set; }
+
 
         public async Task<int> SaveChangesAsync()
         {

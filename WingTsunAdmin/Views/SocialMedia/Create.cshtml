@@ -1,0 +1,31 @@
+﻿@using Application.Helpers;
+@{
+    ViewData["Title"] = "Sosyal Medya Ekle";
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card" style="margin:auto;">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sosyal Medya Ekle</h4>
+                    <form class="forms-sample" id="addSocialMediaForm">
+                        <div class="form-group">
+                            <label for="name">Başlık</label>
+                            <input type="text" class="form-control" id="title" name="title" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Sosyal Medya Linki</label>
+                            <input type="text" class="form-control" id="path" name="path" required>
+                        </div>
+                        <button class="btn btn-danger"><a href="@Url.Action("Index","SocialMedia")" style="color:white;">İptal Ve Listeye Dön</a></button>
+                        <button type="submit" class="btn btn-primary" style="float:right;">Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/SocialMedia/create.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/vendors/jquery-validation/jquery.validate.min.js"></script>
+}

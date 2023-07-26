@@ -1,4 +1,10 @@
-﻿using Application.Admin.Features.AdminFeatures.Queries;
+﻿using Application.Admin.DTOs.Admin;
+using Application.Admin.DTOs.SocialMedia;
+using Application.Admin.Features.AdminFeatures.Commands;
+using Application.Admin.Features.AdminFeatures.Queries;
+using Application.Admin.Features.SocialMediaFeatures.Commands;
+using Application.Admin.Features.SocialMediaFeatures.Queries;
+using Application.Admin.Models;
 using Application.Admin.Models.Admin;
 using Application.Wrappers;
 using Microsoft.AspNetCore.Authentication;
@@ -13,6 +19,16 @@ namespace WingTsunAdmin.Controllers
 {
     public class AdminController : BaseController
     {
+        [HttpGet("admin/list")]
+        public async Task<IActionResult> Index()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+            var model = await Mediator.Send(new GetAllAdminsForAdminQuery());
+            return View(model);
+        }
         public IActionResult Login(string returnUrl = null)
         
         {
@@ -69,5 +85,31 @@ namespace WingTsunAdmin.Controllers
             }
             return RedirectToAction("Login", "Admin");
         }
+        [HttpGet("admin/create")]
+        public ActionResult Create()
+        {
+            if (!HttpContext.User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Login", "Admin");
+            }
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Create(AdminDTO model)
+        {
+            var response = await Mediator.Send(new AddAdminCommand(model));
+            return Ok(response);
+
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Delete(ChangeModel model)
+        {
+            var response = await Mediator.Send(new DeleteAdminCommand(model));
+            return Ok(response);
+
+        }
+
     }
 }

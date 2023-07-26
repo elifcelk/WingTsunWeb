@@ -1,0 +1,52 @@
+﻿@using Application.Helpers;
+@using Domain.Common.Attributes;
+@{
+    ViewData["Title"] = "Sosyal Medya Listesi";
+}
+@model IEnumerable<Application.Admin.Models.SocialMedia.SocialMediaIndexModel>
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-lg-12 grid-margin stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Sosyal Medya Listesi</h4>
+                    <div class="table-responsive">
+                        @if (Model != null && Model.Count() > 0)
+                        {
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Başlık</th>
+                                        <th>Link</th>
+                                        <th>Oluşturma Tarihi</th>
+                                        <th>İşlemler</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var socialmedia in Model.OrderBy(k => k.CreatedTime))
+                                    {
+                                        <tr>
+                                            <td>@socialmedia.Title</td>
+                                            <td>@socialmedia.Path</td>
+                                            <td>@(socialmedia.CreatedTime.ToShortDateString()) </td>
+                                            <td>
+                                                <button data-id="@socialmedia.Id" type="button" class="btn btn-danger button-sm deleteButton">Sil</button>
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        }
+                        else
+                        {
+                            <p>Kayıtlı sosyal medya bulunmamaktadır.</p>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/SocialMedia/index.js" asp-append-version="true"></script>
+}

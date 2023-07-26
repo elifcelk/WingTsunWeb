@@ -1,0 +1,31 @@
+﻿@using Application.Helpers;
+@{
+    ViewData["Title"] = "Yönetici Ekle";
+}
+<div class="content-wrapper">
+    <div class="row">
+        <div class="col-md-6 grid-margin stretch-card" style="margin:auto;">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card-title">Yönetici Ekle</h4>
+                    <form class="forms-sample" id="addAdminForm">
+                        <div class="form-group">
+                            <label for="name">Kullanıcı Adı</label>
+                            <input type="text" class="form-control" id="username" name="username" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="content">Şifre</label>
+                            <input type="password" class="form-control" id="password" name="password" required>
+                        </div>
+                        <button class="btn btn-danger"><a href="@Url.Action("Index","Admin")" style="color:white;">İptal Ve Listeye Dön</a></button>
+                        <button type="submit" class="btn btn-primary" style="float:right;">Ekle</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript" src="~/Scripts/Admin/create.js" asp-append-version="true"></script>
+    <script type="text/javascript" src="~/vendors/jquery-validation/jquery.validate.min.js"></script>
+}

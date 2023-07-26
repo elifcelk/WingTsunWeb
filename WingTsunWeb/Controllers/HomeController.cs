@@ -15,6 +15,7 @@ namespace WingTsunWeb.Controllers
             ViewBag.GetSchools = await Mediator.Send(new GetSchoolForHomeQuery());
             ViewBag.GetAnnouncements = await Mediator.Send(new GetAllAnnouncementsQuery());
             ViewBag.GetVideos = await Mediator.Send(new GetVideosQuery());
+            ViewBag.GetSocialMedias = await Mediator.Send(new GetSocialMediasQuery());
             return View();
         }
         public async Task<IActionResult> Contact()
